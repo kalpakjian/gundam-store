@@ -1,45 +1,46 @@
+<!-- store/templates/store/search_results.html -->
 {% extends 'store/base.html' %}
-
+{% load static %}
 {% block title %}搜尋結果 - Gundam 商店{% endblock %}
-
 {% block content %}
-<div class="container mt-4">
-    <h1 class="mb-3">搜尋結果：{{ query|default:"全部產品" }}</h1>
-    <form method="get" action="{% url 'store:search_products' %}" class="d-flex mb-4">
-        <input type="text" name="q" class="form-control me-2" placeholder="搜尋產品..." value="{{ query }}" aria-label="搜尋">
-        <button type="submit" class="btn btn-primary">搜尋</button>
+<div class="container">
+    <h2>搜尋結果：{{ query|default:"全部產品" }}</h2>
+    <form class="d-flex mb-4" action="{% url 'store:search_products' %}" method="get">
+        <input class="form-control me-2" type="search" name="q" value="{{ query|default:'' }}" placeholder="搜尋產品" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
     </form>
     {% if page_obj %}
         <div class="row">
             {% for product in page_obj %}
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="card h-100">
-                        {% if product.get_cover_url %}
-                            <img src="{{ product.get_cover_url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        {% if product.cloudinary_url %}
+                            <img src="{{ product.cloudinary_url }}" class="card-img-top" alt="{{ product.name }}" loading="lazy">
+                        {% elif product.cover_image %}
+                            <img src="{{ product.cover_image.url }}" class="card-img-top" alt="{{ product.name }}" loading="lazy">
                         {% else %}
-                            <img src="https://via.placeholder.com/200x200?text=No+Image" class="card-img-top" alt="No Image" style="height: 200px; object-fit: cover;">
+                            <img src="{% static 'images/no-image.png' %}" class="card-img-top" alt="無圖片" loading="lazy">
                         {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">
                                 {% if product.discount_price %}
-                                    <span class="text-decoration-line-through text-muted">{{ product.price }} 元</span>
-                                    <strong class="text-danger">{{ product.discount_price }} 元</strong>
+                                    <span class="text-muted text-decoration-line-through">{{ product.price }} 元</span>
+                                    {{ product.discount_price }} 元
                                 {% else %}
                                     {{ product.price }} 元
                                 {% endif %}
                                 <br>比例尺：{{ product.scale }}
                             </p>
-                            <a href="{% url 'store:product_detail' product.pk %}" class="btn btn-primary">查看詳情</a>
+                            <a href="{% url 'store:product_detail' product.id %}" class="btn btn-primary">查看詳情</a>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
-        <!-- 分頁導航 -->
         {% if page_obj.has_previous or page_obj.has_next %}
-            <nav aria-label="搜尋分頁" class="mt-4">
-                <ul class="pagination justify-content-center">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
                     {% if page_obj.has_previous %}
                         <li class="page-item">
                             <a class="page-link" href="?page={{ page_obj.previous_page_number }}&q={{ query|urlencode }}">上一頁</a>
@@ -73,7 +74,7 @@
             </nav>
         {% endif %}
     {% else %}
-        <p class="text-muted">無符合條件的產品。</p>
+        <p>無符合條件的產品。</p>
     {% endif %}
 </div>
 {% endblock %}

@@ -1,27 +1,121 @@
-<form method="post" action="{% url 'accounts:login' %}">
-    {% csrf_token %}
-    {% if form.errors %}
-        <div class="alert alert-danger">
-            {% for error in form.non_field_errors %}
-                {{ error }}
-            {% endfor %}
-            {% for field in form %}
-                {% for error in field.errors %}
-                    {{ error }}
-                {% endfor %}
-            {% endfor %}
-        </div>
-    {% endif %}
-    <div class="form-group mb-3">
-        <label for="id_username" class="form-label">使用者名稱</label>
-        <input type="text" name="username" id="id_username" class="form-control" required value="{{ form.username.value|default:'' }}">
+<!-- accounts/templates/accounts/login_modal.html -->
+{% load static %}
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">登入</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm" method="POST" action="{% url 'accounts:login' %}">
+          {% csrf_token %}
+          <div id="formErrors" class="alert alert-danger d-none"></div>
+          <div id="loadingSpinner" class="d-none text-center mb-3">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">載入中...</span>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="id_username">使用者名稱</label>
+            <input type="text" name="username" id="id_username" class="form-control" required aria-describedby="usernameHelp">
+            <small id="usernameHelp" class="form-text text-muted">請輸入您的使用者名稱</small>
+          </div>
+          <div class="form-group mb-3">
+            <label for="id_password">密碼</label>
+            <input type="password" name="password" id="id_password" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">登入</button>
+          <p class="mt-2 text-center">沒有帳號？<a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">註冊</a></p>
+        </form>
+      </div>
     </div>
-    <div class="form-group mb-3">
-        <label for="id_password" class="form-label">密碼</label>
-        <input type="password" name="password" id="id_password" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary w-100">登入</button>
-    </div>
-    <p class="mt-2 text-center">還沒有帳號？<a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal" style="color: #ffffff;">註冊</a></p>
-</form>
+  </div>
+</div>
+
+<script>
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.startsWith(name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = this;
+  const formData = new FormData(form);
+  const errorDiv = document.getElementById('formErrors');
+  const submitButton = form.querySelector('button[type="submit"]');
+  const spinner = document.getElementById('loadingSpinner');
+  const csrfToken = getCookie('csrftoken');
+
+  form.querySelectorAll('.is-invalid').forEach(input => input.classList.remove('is-invalid'));
+  errorDiv.classList.add('d-none');
+  submitButton.disabled = true;
+  spinner.classList.remove('d-none');
+
+  fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest',
+      'X-CSRFToken': csrfToken
+    }
+  })
+  .then(response => {
+    console.log('Response status:', response.status);
+    console.log('Response headers:', response.headers.get('content-type'));
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Response data:', data);
+    if (data.success) {
+      const successAlert = document.createElement('div');
+      successAlert.className = 'alert alert-success position-fixed top-0 start-50 translate-middle-x mt-3';
+      successAlert.style.zIndex = '1050';
+      successAlert.innerText = data.message || '登入成功！';
+      document.body.appendChild(successAlert);
+
+      // 使用 jQuery 關閉 modal，避開 getInstance 問題
+      $('#loginModal').modal('hide');
+      form.reset();
+
+      setTimeout(() => {
+        successAlert.remove();
+        window.location.reload();
+      }, 2000);
+    } else {
+      errorDiv.classList.remove('d-none');
+      errorDiv.innerHTML = data.errors ? data.errors.join('<br>') : '登入失敗，請檢查用戶名和密碼。';
+      if (data.errors && data.errors.includes('無效的用戶名或密碼。')) {
+        document.getElementById('id_username').classList.add('is-invalid');
+        document.getElementById('id_password').classList.add('is-invalid');
+      }
+    }
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+    errorDiv.classList.remove('d-none');
+    errorDiv.innerHTML = '發生錯誤：' + error.message;
+    if (error.message.includes('403')) {
+      errorDiv.innerHTML += '<br>可能是 CSRF 驗證失敗，請確保已啟用 cookie 並清除瀏覽器快取。';
+    }
+  })
+  .finally(() => {
+    submitButton.disabled = false;
+    spinner.classList.add('d-none');
+  });
+});
+</script>
