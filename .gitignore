@@ -30,6 +30,8 @@ media/
 # Comment out if you want to track migrations
 store/migrations/*
 !store/migrations/__init__.py
+accounts/migrations/*
+!accounts/migrations/__init__.py
 
 # Static files (collected)
 collected_static/
