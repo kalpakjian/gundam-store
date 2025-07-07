@@ -5,11 +5,11 @@
   "fields": {
     "name": "Aegis",
     "description": "",
-    "price": "1.00",
-    "discount_price": null,
-    "stock": 1,
+    "price": "550.00",
+    "discount_price": "495.00",
+    "stock": 58,
     "category": 5,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T03:07:40.385Z",
     "cover_image": "products/covers/gags_c_bqsbRpY.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765368/gundam_store/covers/cover_Aegis.jpg"
@@ -21,11 +21,11 @@
   "fields": {
     "name": "Ball",
     "description": "",
-    "price": "1.00",
+    "price": "350.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 79,
     "category": 9,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T03:12:16.071Z",
     "cover_image": "products/covers/b_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765371/gundam_store/covers/cover_Ball.jpg"
@@ -37,11 +37,11 @@
   "fields": {
     "name": "Banshee",
     "description": "",
-    "price": "1.00",
+    "price": "400.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 45,
     "category": 11,
-    "scale": "",
+    "scale": "RG",
     "created_at": "2025-06-12T03:16:17.280Z",
     "cover_image": "products/covers/bsg_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765374/gundam_store/covers/cover_Banshee.jpg"
@@ -53,11 +53,11 @@
   "fields": {
     "name": "Big Zam",
     "description": "",
-    "price": "1.00",
-    "discount_price": null,
-    "stock": 1,
+    "price": "1000.00",
+    "discount_price": "850.00",
+    "stock": 86,
     "category": 9,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T03:21:59.031Z",
     "cover_image": "products/covers/bz_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765375/gundam_store/covers/cover_Big%20Zam.jpg"
@@ -69,11 +69,11 @@
   "fields": {
     "name": "Blue Destiny Unit 3",
     "description": "",
-    "price": "1.00",
+    "price": "500.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 54,
     "category": 13,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T03:27:59.305Z",
     "cover_image": "products/covers/bdu3_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765377/gundam_store/covers/cover_Blue%20Destiny%20Unit%203.jpg"
@@ -85,11 +85,11 @@
   "fields": {
     "name": "Char's Zaku II",
     "description": "",
-    "price": "1.00",
+    "price": "1500.00",
     "discount_price": null,
-    "stock": 0,
+    "stock": 67,
     "category": 8,
-    "scale": "",
+    "scale": "PG",
     "created_at": "2025-06-12T03:32:22.073Z",
     "cover_image": "products/covers/rzaku2_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765378/gundam_store/covers/cover_Char%27s%20Zaku%20II.jpg"
@@ -102,10 +102,10 @@
     "name": "God Gundam",
     "description": "",
     "price": "500.00",
-    "discount_price": "400.00",
-    "stock": 92,
+    "discount_price": "450.00",
+    "stock": 30,
     "category": 12,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T03:37:15.342Z",
     "cover_image": "products/covers/bg_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765380/gundam_store/covers/cover_God%20Gundam.jpg"
@@ -117,11 +117,11 @@
   "fields": {
     "name": "Gundam Deathscythe Hell",
     "description": "",
-    "price": "1.00",
+    "price": "200.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 92,
     "category": 10,
-    "scale": "",
+    "scale": "HG",
     "created_at": "2025-06-12T03:40:34.386Z",
     "cover_image": "products/covers/gdh_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765381/gundam_store/covers/cover_Gundam%20Deathscythe%20Hell.jpg"
@@ -133,11 +133,11 @@
   "fields": {
     "name": "Destiny Gundam",
     "description": "",
-    "price": "1.00",
+    "price": "200.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 59,
     "category": 5,
-    "scale": "",
+    "scale": "HG",
     "created_at": "2025-06-12T03:42:37.884Z",
     "cover_image": "products/covers/gd_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765384/gundam_store/covers/cover_Destiny%20Gundam.jpg"
@@ -149,11 +149,11 @@
   "fields": {
     "name": "Epyon Gundam",
     "description": "",
-    "price": "1.00",
-    "discount_price": null,
-    "stock": 1,
+    "price": "400.00",
+    "discount_price": "340.00",
+    "stock": 50,
     "category": 10,
-    "scale": "",
+    "scale": "RG",
     "created_at": "2025-06-12T03:47:13.604Z",
     "cover_image": "products/covers/eg_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765385/gundam_store/covers/cover_Epyon%20Gundam.jpg"
@@ -165,11 +165,11 @@
   "fields": {
     "name": "GalBaldy",
     "description": "",
-    "price": "1.00",
+    "price": "450.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 73,
     "category": 6,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T03:50:53.569Z",
     "cover_image": "products/covers/gal_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765387/gundam_store/covers/cover_GalBaldy.jpg"
@@ -181,11 +181,11 @@
   "fields": {
     "name": "GM Sniper II",
     "description": "",
-    "price": "1.00",
+    "price": "550.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 40,
     "category": 9,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T03:57:58.162Z",
     "cover_image": "products/covers/spgm_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765389/gundam_store/covers/cover_GM%20Sniper%20II.jpg"
@@ -197,11 +197,11 @@
   "fields": {
     "name": "Gouf",
     "description": "",
-    "price": "1.00",
+    "price": "500.00",
     "discount_price": null,
-    "stock": 0,
+    "stock": 83,
     "category": 9,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T04:00:29.312Z",
     "cover_image": "products/covers/gf_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765390/gundam_store/covers/cover_Gouf.jpg"
@@ -213,11 +213,11 @@
   "fields": {
     "name": "Gouf Flight Type",
     "description": "",
-    "price": "1.00",
+    "price": "300.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 28,
     "category": 9,
-    "scale": "",
+    "scale": "RG",
     "created_at": "2025-06-12T04:04:01.810Z",
     "cover_image": "products/covers/gft_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765391/gundam_store/covers/cover_Gouf%20Flight%20Type.jpg"
@@ -229,11 +229,11 @@
   "fields": {
     "name": "Hyaku Shiki",
     "description": "",
-    "price": "1.00",
+    "price": "400.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 61,
     "category": 6,
-    "scale": "",
+    "scale": "RG",
     "created_at": "2025-06-12T04:10:42.046Z",
     "cover_image": "products/covers/hk_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765393/gundam_store/covers/cover_Hyaku%20Shiki.jpg"
@@ -245,11 +245,11 @@
   "fields": {
     "name": "GP01-Fb",
     "description": "",
-    "price": "1.00",
+    "price": "650.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 96,
     "category": 9,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T04:16:18.972Z",
     "cover_image": "products/covers/gp01fb_c_078nHoh.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765394/gundam_store/covers/cover_GP01-Fb.jpg"
@@ -261,11 +261,11 @@
   "fields": {
     "name": "GP02A",
     "description": "",
-    "price": "1.00",
+    "price": "300.00",
     "discount_price": null,
-    "stock": 0,
+    "stock": 55,
     "category": 9,
-    "scale": "",
+    "scale": "HG",
     "created_at": "2025-06-12T04:17:35.685Z",
     "cover_image": "products/covers/gp2_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765396/gundam_store/covers/cover_GP02A.jpg"
@@ -277,11 +277,11 @@
   "fields": {
     "name": "Gundam",
     "description": "",
-    "price": "1.00",
-    "discount_price": null,
-    "stock": 1,
+    "price": "350.00",
+    "discount_price": "315.00",
+    "stock": 90,
     "category": 9,
-    "scale": "",
+    "scale": "RG",
     "created_at": "2025-06-12T04:24:24.808Z",
     "cover_image": "products/covers/og_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765397/gundam_store/covers/cover_Gundam.jpg"
@@ -293,11 +293,11 @@
   "fields": {
     "name": "Hi Zaku",
     "description": "",
-    "price": "1.00",
+    "price": "500.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 45,
     "category": 9,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T04:28:30.687Z",
     "cover_image": "products/covers/hz_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765398/gundam_store/covers/cover_Hi%20Zaku.jpg"
@@ -309,11 +309,11 @@
   "fields": {
     "name": "Hi-v",
     "description": "",
-    "price": "1.00",
+    "price": "200.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 67,
     "category": 9,
-    "scale": "",
+    "scale": "HG",
     "created_at": "2025-06-12T04:31:40.848Z",
     "cover_image": "products/covers/hng_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765399/gundam_store/covers/cover_Hi-v.jpg"
@@ -325,11 +325,11 @@
   "fields": {
     "name": "Hyatt Shiki Kai",
     "description": "",
-    "price": "1.00",
+    "price": "400.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 35,
     "category": 7,
-    "scale": "",
+    "scale": "RG",
     "created_at": "2025-06-12T04:41:43.172Z",
     "cover_image": "products/covers/hkfa_c.png",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765402/gundam_store/covers/cover_Hyatt%20Shiki%20Kai.png"
@@ -341,11 +341,11 @@
   "fields": {
     "name": "Justice Gundam",
     "description": "",
-    "price": "1.00",
+    "price": "1800.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 79,
     "category": 5,
-    "scale": "",
+    "scale": "PG",
     "created_at": "2025-06-12T06:03:48.704Z",
     "cover_image": "products/covers/gj_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765404/gundam_store/covers/cover_Justice%20Gundam.webp"
@@ -357,11 +357,11 @@
   "fields": {
     "name": "Leo",
     "description": "",
-    "price": "1.00",
+    "price": "350.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 60,
     "category": 10,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T06:05:03.441Z",
     "cover_image": "products/covers/leo_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765405/gundam_store/covers/cover_Leo.png"
@@ -374,10 +374,10 @@
     "name": "Master Gundam",
     "description": "",
     "price": "300.00",
-    "discount_price": "250.00",
-    "stock": 95,
+    "discount_price": "255.00",
+    "stock": 89,
     "category": 12,
-    "scale": "",
+    "scale": "HG",
     "created_at": "2025-06-12T06:06:21.195Z",
     "cover_image": "products/covers/mg_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765410/gundam_store/covers/cover_Master%20Gundam.png"
@@ -389,11 +389,11 @@
   "fields": {
     "name": "Gundam Mk-II",
     "description": "",
-    "price": "1.00",
+    "price": "1500.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 48,
     "category": 8,
-    "scale": "",
+    "scale": "PG",
     "created_at": "2025-06-12T06:08:06.740Z",
     "cover_image": "products/covers/gmk2_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765415/gundam_store/covers/cover_Gundam%20Mk-II.jpg"
@@ -405,11 +405,11 @@
   "fields": {
     "name": "Gundam Mk-Ii (Titans)",
     "description": "",
-    "price": "1.00",
+    "price": "1500.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 65,
     "category": 6,
-    "scale": "",
+    "scale": "PG",
     "created_at": "2025-06-12T06:10:01.083Z",
     "cover_image": "products/covers/mk2t_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765416/gundam_store/covers/cover_Gundam%20Mk-Ii%20%28Titans%29.jpg"
@@ -421,11 +421,11 @@
   "fields": {
     "name": "Prototype ZZ Gundam",
     "description": "",
-    "price": "1.00",
+    "price": "800.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 84,
     "category": 7,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T06:12:37.032Z",
     "cover_image": "products/covers/zz_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765418/gundam_store/covers/cover_Prototype%20ZZ%20Gundam.jpg"
@@ -437,11 +437,11 @@
   "fields": {
     "name": "Rick Dias",
     "description": "",
-    "price": "1.00",
+    "price": "200.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 39,
     "category": 8,
-    "scale": "",
+    "scale": "HG",
     "created_at": "2025-06-12T06:27:07.502Z",
     "cover_image": "products/covers/rds_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765419/gundam_store/covers/cover_Rick%20Dias.jpg"
@@ -453,11 +453,11 @@
   "fields": {
     "name": "Sazabi",
     "description": "",
-    "price": "1.00",
-    "discount_price": null,
-    "stock": 1,
+    "price": "550.00",
+    "discount_price": "495.00",
+    "stock": 69,
     "category": 8,
-    "scale": "",
+    "scale": "RG",
     "created_at": "2025-06-12T06:28:42.175Z",
     "cover_image": "products/covers/szb_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765421/gundam_store/covers/cover_Sazabi.jpg"
@@ -469,11 +469,11 @@
   "fields": {
     "name": "Shenlong Gundam",
     "description": "",
-    "price": "1.00",
+    "price": "350.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 29,
     "category": 10,
-    "scale": "",
+    "scale": "RG",
     "created_at": "2025-06-12T06:30:55.453Z",
     "cover_image": "products/covers/sl_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765422/gundam_store/covers/cover_Shenlong%20Gundam.jpg"
@@ -485,11 +485,11 @@
   "fields": {
     "name": "Shining Gundam",
     "description": "",
-    "price": "1.00",
+    "price": "400.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 53,
     "category": 12,
-    "scale": "",
+    "scale": "RG",
     "created_at": "2025-06-12T06:37:41.137Z",
     "cover_image": "products/covers/shin_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765424/gundam_store/covers/cover_Shining%20Gundam.jpg"
@@ -501,11 +501,11 @@
   "fields": {
     "name": "Strike Gundam",
     "description": "",
-    "price": "1000.00",
-    "discount_price": "800.00",
-    "stock": 94,
+    "price": "200.00",
+    "discount_price": "170.00",
+    "stock": 99,
     "category": 5,
-    "scale": "",
+    "scale": "HG",
     "created_at": "2025-06-12T06:42:28.579Z",
     "cover_image": "products/covers/sg_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765425/gundam_store/covers/cover_Strike%20Gundam.jpg"
@@ -517,11 +517,11 @@
   "fields": {
     "name": "Strike Freedom Gundam",
     "description": "",
-    "price": "1.00",
+    "price": "200.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 44,
     "category": 5,
-    "scale": "",
+    "scale": "HG",
     "created_at": "2025-06-12T06:43:56.692Z",
     "cover_image": "products/covers/gsf_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765427/gundam_store/covers/cover_Strike%20Freedom%20Gundam.jpg"
@@ -533,11 +533,11 @@
   "fields": {
     "name": "Sword Impulse Gundam",
     "description": "",
-    "price": "1.00",
+    "price": "200.00",
     "discount_price": null,
-    "stock": 0,
+    "stock": 68,
     "category": 5,
-    "scale": "",
+    "scale": "HG",
     "created_at": "2025-06-12T06:45:35.827Z",
     "cover_image": "products/covers/sig_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765428/gundam_store/covers/cover_Sword%20Impulse%20Gundam.jpg"
@@ -549,11 +549,11 @@
   "fields": {
     "name": "Tallgeese II",
     "description": "",
-    "price": "1.00",
+    "price": "150.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 88,
     "category": 10,
-    "scale": "",
+    "scale": "HG",
     "created_at": "2025-06-12T06:48:25.387Z",
     "cover_image": "products/covers/tgs2_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765430/gundam_store/covers/cover_Tallgeese%20II.jpg"
@@ -565,11 +565,11 @@
   "fields": {
     "name": "Unicorn Gundam",
     "description": "",
-    "price": "1.00",
-    "discount_price": null,
-    "stock": 1,
+    "price": "2500.00",
+    "discount_price": "2250.00",
+    "stock": 59,
     "category": 11,
-    "scale": "",
+    "scale": "PG",
     "created_at": "2025-06-12T06:50:10.856Z",
     "cover_image": "products/covers/ug_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765432/gundam_store/covers/cover_Unicorn%20Gundam.jpg"
@@ -581,11 +581,11 @@
   "fields": {
     "name": "v Gundam",
     "description": "",
-    "price": "1.00",
+    "price": "200.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 100,
     "category": 8,
-    "scale": "",
+    "scale": "HG",
     "created_at": "2025-06-12T06:52:00.949Z",
     "cover_image": "products/covers/v_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765433/gundam_store/covers/cover_v%20Gundam.jpg"
@@ -597,11 +597,11 @@
   "fields": {
     "name": "Wing Zero Gundam",
     "description": "",
-    "price": "1.00",
+    "price": "650.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 75,
     "category": 10,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T06:57:23.134Z",
     "cover_image": "products/covers/w0_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765435/gundam_store/covers/cover_Wing%20Zero%20Gundam.jpg"
@@ -613,11 +613,11 @@
   "fields": {
     "name": "Z'Gok",
     "description": "",
-    "price": "1.00",
-    "discount_price": null,
-    "stock": 1,
+    "price": "500.00",
+    "discount_price": "425.00",
+    "stock": 90,
     "category": 9,
-    "scale": "",
+    "scale": "MG",
     "created_at": "2025-06-12T07:00:56.511Z",
     "cover_image": "products/covers/cb_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765437/gundam_store/covers/cover_Z%27Gok.jpg"
@@ -629,14 +629,209 @@
   "fields": {
     "name": "Zeta Gundam",
     "description": "",
-    "price": "1.00",
+    "price": "200.00",
     "discount_price": null,
-    "stock": 1,
+    "stock": 85,
     "category": 6,
-    "scale": "",
+    "scale": "HG",
     "created_at": "2025-06-12T07:05:35.275Z",
     "cover_image": "products/covers/zg_c.jpg",
     "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1749765438/gundam_store/covers/cover_Zeta%20Gundam.jpg"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 52,
+  "fields": {
+    "name": "GQuuuuuuX",
+    "description": "",
+    "price": "220.00",
+    "discount_price": "190.00",
+    "stock": 91,
+    "category": 14,
+    "scale": "HG",
+    "created_at": "2025-06-22T08:16:29.865Z",
+    "cover_image": "products/covers/bandai_hg_model_kits_-_1_144_gquuuuuux_250117030530.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581803/gundam_store/covers/cover_GQuuuuuuX.webp"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 53,
+  "fields": {
+    "name": "RED GUNDAM",
+    "description": "",
+    "price": "300.00",
+    "discount_price": null,
+    "stock": 98,
+    "category": 14,
+    "scale": "HG",
+    "created_at": "2025-06-22T08:20:34.317Z",
+    "cover_image": "products/covers/bandai_hg_model_kits_-_1_144_red_gundam_mobile_suit_gundam_gquuuuuux__2_0K5lP5S.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581805/gundam_store/covers/cover_RED%20GUNDAM.webp"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 54,
+  "fields": {
+    "name": "Assault Free Gundam Full Firepower Mode",
+    "description": "",
+    "price": "600.00",
+    "discount_price": "520.00",
+    "stock": 96,
+    "category": 15,
+    "scale": "MG",
+    "created_at": "2025-06-22T08:33:01.473Z",
+    "cover_image": "products/covers/c.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581806/gundam_store/covers/cover_Assault%20Free%20Gundam%20Full%20Firepower%20Mode.webp"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 56,
+  "fields": {
+    "name": "POLICE ZAKU",
+    "description": "",
+    "price": "200.00",
+    "discount_price": null,
+    "stock": 98,
+    "category": 14,
+    "scale": "HG",
+    "created_at": "2025-06-22T10:50:31.445Z",
+    "cover_image": "products/covers/bandai_hg_model_kits_-_1_144_police_zaku_mobile_suit_gundam_gquuuuuux__2_z2FuHhe.jpg",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750589482/gundam_store/covers/cover_POLICE%20ZAKU.jpg"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 57,
+  "fields": {
+    "name": "RX-78-2 GUNDAM",
+    "description": "2.0",
+    "price": "280.00",
+    "discount_price": null,
+    "stock": 98,
+    "category": 9,
+    "scale": "RG",
+    "created_at": "2025-06-22T19:32:27.676Z",
+    "cover_image": "products/covers/2000x.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750625112/gundam_store/covers/cover_RX-78-2%20GUNDAM.webp"
+  }
+},
+{
+  "model": "store.product",
+  "pk": 58,
+  "fields": {
+    "name": "MSN-02 ZEONG",
+    "description": "",
+    "price": "400.00",
+    "discount_price": "380.00",
+    "stock": 100,
+    "category": 9,
+    "scale": "RG",
+    "created_at": "2025-06-27T07:15:40.686Z",
+    "cover_image": "products/covers/1660536414_193_4261_s_a29gwrtvyplo5f65vrmb3zz9dgul.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1751008580/gundam_store/covers/cover_MSN-02%20ZEONG.webp"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 5,
+  "fields": {
+    "name": "Seed",
+    "description": "",
+    "banner_path": "banners/Seedc.jpg"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 6,
+  "fields": {
+    "name": "Z",
+    "description": "",
+    "banner_path": "banners/Zc.jpg"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 7,
+  "fields": {
+    "name": "ZZ",
+    "description": "",
+    "banner_path": "banners/Zzc.jpg"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 8,
+  "fields": {
+    "name": "Char",
+    "description": "",
+    "banner_path": "banners/Charc.jpg"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 9,
+  "fields": {
+    "name": "Gundam",
+    "description": "",
+    "banner_path": "banners/Gundamc.jpg"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 10,
+  "fields": {
+    "name": "Wing",
+    "description": "",
+    "banner_path": "banners/Wingc.jpg"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 11,
+  "fields": {
+    "name": "Unicorn",
+    "description": "",
+    "banner_path": "banners/Unicornc.jpg"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 12,
+  "fields": {
+    "name": "G",
+    "description": "",
+    "banner_path": "banners/Gc.jpg"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 13,
+  "fields": {
+    "name": "Blue Denstiny",
+    "description": "",
+    "banner_path": "banners/BD.png"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 14,
+  "fields": {
+    "name": "GQuuuuuuX",
+    "description": "",
+    "banner_path": "banners/Gquuuuuux_JP_logo.svg.png"
+  }
+},
+{
+  "model": "store.category",
+  "pk": 15,
+  "fields": {
+    "name": "SEED DESTINY",
+    "description": "",
+    "banner_path": "banners/SEED_D_logo.jpg"
   }
 },
 {
@@ -2455,75 +2650,608 @@
   }
 },
 {
-  "model": "store.category",
-  "pk": 5,
+  "model": "store.productimage",
+  "pk": 222,
   "fields": {
-    "name": "Seed",
-    "description": ""
+    "product": 52,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_gquuuuuux_250117030549.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581809/gundam_store/images/image_GQuuuuuuX_222.webp",
+    "description": "",
+    "order": 0
   }
 },
 {
-  "model": "store.category",
-  "pk": 6,
+  "model": "store.productimage",
+  "pk": 223,
   "fields": {
-    "name": "Z",
-    "description": ""
+    "product": 52,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_gquuuuuux_250117030550_1.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581810/gundam_store/images/image_GQuuuuuuX_223.webp",
+    "description": "",
+    "order": 0
   }
 },
 {
-  "model": "store.category",
-  "pk": 7,
+  "model": "store.productimage",
+  "pk": 224,
   "fields": {
-    "name": "ZZ",
-    "description": ""
+    "product": 52,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_gquuuuuux_250117030550_2.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581811/gundam_store/images/image_GQuuuuuuX_224.webp",
+    "description": "",
+    "order": 0
   }
 },
 {
-  "model": "store.category",
-  "pk": 8,
+  "model": "store.productimage",
+  "pk": 225,
   "fields": {
-    "name": "Char",
-    "description": ""
+    "product": 52,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_gquuuuuux_250117030550.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581813/gundam_store/images/image_GQuuuuuuX_225.webp",
+    "description": "",
+    "order": 0
   }
 },
 {
-  "model": "store.category",
-  "pk": 9,
+  "model": "store.productimage",
+  "pk": 226,
   "fields": {
-    "name": "Gundam",
-    "description": ""
+    "product": 52,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_gquuuuuux_250117030551_1.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581814/gundam_store/images/image_GQuuuuuuX_226.webp",
+    "description": "",
+    "order": 0
   }
 },
 {
-  "model": "store.category",
-  "pk": 10,
+  "model": "store.productimage",
+  "pk": 227,
   "fields": {
-    "name": "Wing",
-    "description": ""
+    "product": 52,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_gquuuuuux_250117030551.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581815/gundam_store/images/image_GQuuuuuuX_227.webp",
+    "description": "",
+    "order": 0
   }
 },
 {
-  "model": "store.category",
-  "pk": 11,
+  "model": "store.productimage",
+  "pk": 228,
   "fields": {
-    "name": "Unicorn",
-    "description": ""
+    "product": 52,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_gquuuuuux_250117030552_1.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581817/gundam_store/images/image_GQuuuuuuX_228.webp",
+    "description": "",
+    "order": 0
   }
 },
 {
-  "model": "store.category",
-  "pk": 12,
+  "model": "store.productimage",
+  "pk": 229,
   "fields": {
-    "name": "G",
-    "description": ""
+    "product": 52,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_gquuuuuux_250117030552.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581818/gundam_store/images/image_GQuuuuuuX_229.webp",
+    "description": "",
+    "order": 0
   }
 },
 {
-  "model": "store.category",
-  "pk": 13,
+  "model": "store.productimage",
+  "pk": 230,
   "fields": {
-    "name": "Blue Denstiny",
-    "description": ""
+    "product": 52,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_gquuuuuux_250117030553.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581819/gundam_store/images/image_GQuuuuuuX_230.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 231,
+  "fields": {
+    "product": 53,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_red_gundam_250225092905_1.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581821/gundam_store/images/image_RED%20GUNDAM_231.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 232,
+  "fields": {
+    "product": 53,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_red_gundam_250225092905_2.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581822/gundam_store/images/image_RED%20GUNDAM_232.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 233,
+  "fields": {
+    "product": 53,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_red_gundam_250225092905.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581823/gundam_store/images/image_RED%20GUNDAM_233.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 234,
+  "fields": {
+    "product": 53,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_red_gundam_250225092906_1.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581824/gundam_store/images/image_RED%20GUNDAM_234.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 235,
+  "fields": {
+    "product": 53,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_red_gundam_250225092906.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581825/gundam_store/images/image_RED%20GUNDAM_235.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 236,
+  "fields": {
+    "product": 53,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_red_gundam_mobile_suit_gundam_gquuuuuux__2_3YsHRTB.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581826/gundam_store/images/image_RED%20GUNDAM_236.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 237,
+  "fields": {
+    "product": 53,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_red_gundam_mobile_suit_gundam_gquuuuuux__2_Mt5wqm7.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581828/gundam_store/images/image_RED%20GUNDAM_237.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 238,
+  "fields": {
+    "product": 53,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_red_gundam_mobile_suit_gundam_gquuuuuux__2_t9QIdC9.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581829/gundam_store/images/image_RED%20GUNDAM_238.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 239,
+  "fields": {
+    "product": 53,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_red_gundam_mobile_suit_gundam_gquuuuuux__2_2wtqkOJ.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581830/gundam_store/images/image_RED%20GUNDAM_239.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 240,
+  "fields": {
+    "product": 53,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_red_gundam_mobile_suit_gundam_gquuuuuux__2_8vmeyKU.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581832/gundam_store/images/image_RED%20GUNDAM_240.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 241,
+  "fields": {
+    "product": 53,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_red_gundam_mobile_suit_gundam_gquuuuuux__2_864MtIC.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581833/gundam_store/images/image_RED%20GUNDAM_241.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 242,
+  "fields": {
+    "product": 53,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_red_gundam_mobile_suit_gundam_gquuuuuux__2_pL5IruE.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581834/gundam_store/images/image_RED%20GUNDAM_242.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 243,
+  "fields": {
+    "product": 54,
+    "image": "products/images/1.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581835/gundam_store/images/image_Assault%20Free%20Gundam%20Full%20Firepower%20Mode_243.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 244,
+  "fields": {
+    "product": 54,
+    "image": "products/images/2.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581836/gundam_store/images/image_Assault%20Free%20Gundam%20Full%20Firepower%20Mode_244.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 245,
+  "fields": {
+    "product": 54,
+    "image": "products/images/3.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581838/gundam_store/images/image_Assault%20Free%20Gundam%20Full%20Firepower%20Mode_245.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 246,
+  "fields": {
+    "product": 54,
+    "image": "products/images/4.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581839/gundam_store/images/image_Assault%20Free%20Gundam%20Full%20Firepower%20Mode_246.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 247,
+  "fields": {
+    "product": 54,
+    "image": "products/images/5.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750581840/gundam_store/images/image_Assault%20Free%20Gundam%20Full%20Firepower%20Mode_247.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 250,
+  "fields": {
+    "product": 56,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_police_zaku_250225092341.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750589483/gundam_store/images/image_POLICE%20ZAKU_250.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 251,
+  "fields": {
+    "product": 56,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_police_zaku_250225092343_1.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750589484/gundam_store/images/image_POLICE%20ZAKU_251.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 252,
+  "fields": {
+    "product": 56,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_police_zaku_mobile_suit_gundam_gquuuuuux___q3umIXm.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750589485/gundam_store/images/image_POLICE%20ZAKU_252.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 253,
+  "fields": {
+    "product": 56,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_police_zaku_mobile_suit_gundam_gquuuuuux___FNfyYwi.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750589487/gundam_store/images/image_POLICE%20ZAKU_253.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 254,
+  "fields": {
+    "product": 56,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_police_zaku_mobile_suit_gundam_gquuuuuux___jRoqpWY.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750589488/gundam_store/images/image_POLICE%20ZAKU_254.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 255,
+  "fields": {
+    "product": 56,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_police_zaku_mobile_suit_gundam_gquuuuuux___tbr7G2C.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750589490/gundam_store/images/image_POLICE%20ZAKU_255.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 256,
+  "fields": {
+    "product": 56,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_police_zaku_mobile_suit_gundam_gquuuuuux___8ziLYCB.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750589491/gundam_store/images/image_POLICE%20ZAKU_256.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 257,
+  "fields": {
+    "product": 56,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_police_zaku_mobile_suit_gundam_gquuuuuux__2_adggjNK.jpg",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750589492/gundam_store/images/image_POLICE%20ZAKU_257.jpg",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 258,
+  "fields": {
+    "product": 56,
+    "image": "products/images/bandai_hg_model_kits_-_1_144_police_zaku_mobile_suit_gundam_gquuuuuux___IAxlLx8.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750589493/gundam_store/images/image_POLICE%20ZAKU_258.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 259,
+  "fields": {
+    "product": 57,
+    "image": "products/images/2000x-3.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750625114/gundam_store/images/image_RX-78-2%20GUNDAM_259.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 260,
+  "fields": {
+    "product": 57,
+    "image": "products/images/2000x-4.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750625115/gundam_store/images/image_RX-78-2%20GUNDAM_260.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 261,
+  "fields": {
+    "product": 57,
+    "image": "products/images/2000x-5.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750625117/gundam_store/images/image_RX-78-2%20GUNDAM_261.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 262,
+  "fields": {
+    "product": 57,
+    "image": "products/images/2000x-6.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750625118/gundam_store/images/image_RX-78-2%20GUNDAM_262.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 263,
+  "fields": {
+    "product": 57,
+    "image": "products/images/2000x-7.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750625120/gundam_store/images/image_RX-78-2%20GUNDAM_263.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 264,
+  "fields": {
+    "product": 57,
+    "image": "products/images/2000x-8.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750625121/gundam_store/images/image_RX-78-2%20GUNDAM_264.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 265,
+  "fields": {
+    "product": 57,
+    "image": "products/images/2000x-9.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750625122/gundam_store/images/image_RX-78-2%20GUNDAM_265.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 266,
+  "fields": {
+    "product": 57,
+    "image": "products/images/2000x-10.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750625123/gundam_store/images/image_RX-78-2%20GUNDAM_266.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 267,
+  "fields": {
+    "product": 57,
+    "image": "products/images/2000x-11.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750625125/gundam_store/images/image_RX-78-2%20GUNDAM_267.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 268,
+  "fields": {
+    "product": 57,
+    "image": "products/images/2000x-12.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1750625126/gundam_store/images/image_RX-78-2%20GUNDAM_268.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 269,
+  "fields": {
+    "product": 58,
+    "image": "products/images/1660536415_153_4261_s_m4ng5witsgk31ijmkdrbrmnt9jz6.jpg",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1751008581/gundam_store/images/image_MSN-02%20ZEONG_269.jpg",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 270,
+  "fields": {
+    "product": 58,
+    "image": "products/images/1660536416_155_4261_s_rmcjcui8z9yy2qz7a4psvgxgv2l3.jpg",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1751008583/gundam_store/images/image_MSN-02%20ZEONG_270.jpg",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 271,
+  "fields": {
+    "product": 58,
+    "image": "products/images/1660536416_156_4261_s_auszz7hd7qpb1qze4ykxuu0uwt9v.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1751008584/gundam_store/images/image_MSN-02%20ZEONG_271.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 272,
+  "fields": {
+    "product": 58,
+    "image": "products/images/1660536417_157_4261_s_c7trqugiy2j1hl3u6e88tgpuo731.jpg",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1751010392/gundam_store/images/image_MSN-02%20ZEONG_272.jpg",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 273,
+  "fields": {
+    "product": 58,
+    "image": "products/images/1660536418_158_4261_s_9g3omc5lrb1y51p7vqese30x299j.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1751010393/gundam_store/images/image_MSN-02%20ZEONG_273.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 274,
+  "fields": {
+    "product": 58,
+    "image": "products/images/1660536419_159_4261_s_tzb5s6w482w01nomb8722xddu7q5.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1751010395/gundam_store/images/image_MSN-02%20ZEONG_274.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 275,
+  "fields": {
+    "product": 58,
+    "image": "products/images/1660536419_189_4261_s_7usc14b2w96dvr9r8qco0r7cof9v.jpg",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1751010396/gundam_store/images/image_MSN-02%20ZEONG_275.jpg",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 276,
+  "fields": {
+    "product": 58,
+    "image": "products/images/1660536420_190_4261_s_eir10az84csrz5rouug8y2ptkf5l.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1751010398/gundam_store/images/image_MSN-02%20ZEONG_276.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 277,
+  "fields": {
+    "product": 58,
+    "image": "products/images/1660536421_191_4261_s_hwkoqj64zr5kge9ebza2rkclsia9.webp",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1751010399/gundam_store/images/image_MSN-02%20ZEONG_277.webp",
+    "description": "",
+    "order": 0
+  }
+},
+{
+  "model": "store.productimage",
+  "pk": 278,
+  "fields": {
+    "product": 58,
+    "image": "products/images/1660536421_192_4261_s_e0zlhqr4ler9xi1a280pxeup88xq.jpg",
+    "cloudinary_url": "https://res.cloudinary.com/dlxghvxpf/image/upload/v1751010401/gundam_store/images/image_MSN-02%20ZEONG_278.jpg",
+    "description": "",
+    "order": 0
   }
 }
 ]
