@@ -1,3 +1,4 @@
+# settings.py
 """
 Django settings for gundam_store project.
 """
@@ -5,7 +6,7 @@ Django settings for gundam_store project.
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-import cloudinary
+# import cloudinary  # 暫時註解 Cloudinary 相關設定
 
 load_dotenv()
 
@@ -22,11 +23,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary',
-    'cloudinary_storage',
+    # 'cloudinary',  # 註解 Cloudinary
+    # 'cloudinary_storage',  # 註解 Cloudinary 儲存
     'store.apps.StoreConfig',
-    'accounts.apps.AccountsConfig',  # 新增 accounts app
-    'widget_tweaks',  # 用於自訂表單樣式
+    'accounts.apps.AccountsConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -78,24 +79,24 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']  # 如果有自訂 CSS，添加此行
+STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# 添加版本控制
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# 移除 Cloudinary 儲存設定，使用本地檔案系統
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-cloudinary.config(
-    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
-    api_key=os.getenv('CLOUDINARY_API_KEY'),
-    api_secret=os.getenv('CLOUDINARY_API_SECRET'),
-    secure=True
-)
-
+# 確保 media 設定正確
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# 移除 Cloudinary 設定
+# cloudinary.config(
+#     cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
+#     api_key=os.getenv('CLOUDINARY_API_KEY'),
+#     api_secret=os.getenv('CLOUDINARY_API_SECRET'),
+#     secure=True
+# )
 
 LOGGING = {
     'version': 1,

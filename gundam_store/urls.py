@@ -10,3 +10,7 @@ urlpatterns = [
     path('', lambda request: redirect('store:home')),  # 根路徑重定向到 store:home
     path('accounts/', include('accounts.urls')),  # accounts 應用程式路由
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# 開發環境中提供 media 檔案
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

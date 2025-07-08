@@ -1,4 +1,3 @@
-# accounts/forms.py
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -26,3 +25,9 @@ class UserProfileForm(forms.ModelForm):
         widgets = {
             'address': forms.Textarea(attrs={'rows': 3}),
         }
+
+    def clean_avatar(self):
+        avatar = self.cleaned_data.get('avatar')
+        if avatar and avatar.size > 2 * 1024 * 1024:  # 限制 2MB
+            raise forms.ValidationError('頭像檔案大小不得超過 2MB。')
+        return avatar

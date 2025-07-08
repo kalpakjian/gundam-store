@@ -4,40 +4,70 @@
 {% block title %}更新個人資料{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2>更新個人資料</h2>
+<div class="container mt-5">
+    <h2 class="mb-4">更新個人資料</h2>
+
     {% if messages %}
+    <div class="alert alert-info">
         {% for message in messages %}
-            <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
-                {{ message }}
-            </div>
+            {{ message }}
         {% endfor %}
+    </div>
     {% endif %}
-    <form method="post" enctype="multipart/form-data">
+
+    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
         {% csrf_token %}
+
+        <!-- 頭像上傳 -->
         <div class="mb-3">
             <label for="avatar" class="form-label">頭像</label>
             {{ form.avatar|add_class:"form-control" }}
             {% if form.avatar.errors %}
                 {% for error in form.avatar.errors %}
-                    <div class="text-danger">{{ error }}</div>
+                    <div class="invalid-feedback d-block">{{ error }}</div>
                 {% endfor %}
             {% endif %}
             {% if request.user.userprofile.avatar %}
-                <img src="{{ request.user.userprofile.avatar.url }}" alt="當前頭像" class="img-thumbnail mt-2" style="max-width: 100px;">
+                <div class="mt-2">
+                    <img src="{{ request.user.userprofile.avatar.url }}" alt="當前頭像" class="img-thumbnail" style="max-width: 100px;">
+                </div>
             {% endif %}
         </div>
+
+        <!-- 地址 -->
         <div class="mb-3">
             <label for="address" class="form-label">地址</label>
             {{ form.address|add_class:"form-control" }}
             {% if form.address.errors %}
                 {% for error in form.address.errors %}
-                    <div class="text-danger">{{ error }}</div>
+                    <div class="invalid-feedback d-block">{{ error }}</div>
                 {% endfor %}
             {% endif %}
         </div>
-        <button type="submit" class="btn btn-primary">保存</button>
-        <a href="{% url 'store:profile' %}" class="btn btn-secondary">取消</a>
+
+        <!-- 提交按鈕 -->
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">保存</button>
+            <a href="{% url 'store:profile' %}" class="btn btn-secondary">取消</a>
+        </div>
     </form>
 </div>
+
+<!-- Bootstrap 表單驗證 JS -->
+<script>
+    // 啟用 Bootstrap 表單驗證
+    (function () {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+</script>
 {% endblock %}
