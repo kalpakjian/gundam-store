@@ -1,37 +1,24 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // 監聽 Modal 顯示事件
-    document.addEventListener('show.bs.modal', function (event) {
-        setTimeout(function () {
-            const backdrop = document.querySelector('.modal-backdrop');
-            if (backdrop) {
-                backdrop.classList.add('custom-bg');
-            }
-        }, 0);
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    // 模態框 ID 清單
+    const modalIds = ['loginModal', 'registerModal'];
 
-    // 監聽 Modal 關閉事件，清理自訂類
-    document.addEventListener('hidden.bs.modal', function (event) {
+    // 通用模態框事件處理
+    const handleModalBackdrop = (addClass) => {
         const backdrop = document.querySelector('.modal-backdrop');
         if (backdrop) {
-            backdrop.classList.remove('custom-bg');
+            backdrop.classList.toggle('custom-bg', addClass);
         }
-    });
+    };
 
-    // 確保 AJAX 更新後重新綁定事件
-    function bindModalEvents(modalId) {
+    // 全局模態框事件
+    document.addEventListener('show.bs.modal', () => handleModalBackdrop(true));
+    document.addEventListener('hidden.bs.modal', () => handleModalBackdrop(false));
+
+    // 為 AJAX 載入的模態框綁定事件
+    modalIds.forEach(modalId => {
         const modalElement = document.getElementById(modalId);
         if (modalElement) {
-            const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
-            modalElement.addEventListener('show.bs.modal', function () {
-                const backdrop = document.querySelector('.modal-backdrop');
-                if (backdrop) {
-                    backdrop.classList.add('custom-bg');
-                }
-            });
+            modalElement.addEventListener('show.bs.modal', () => handleModalBackdrop(true));
         }
-    }
-
-    // 初始綁定
-    bindModalEvents('loginModal');
-    bindModalEvents('registerModal');
+    });
 });

@@ -28,6 +28,9 @@ class UserProfileForm(forms.ModelForm):
 
     def clean_avatar(self):
         avatar = self.cleaned_data.get('avatar')
-        if avatar and avatar.size > 2 * 1024 * 1024:  # 限制 2MB
-            raise forms.ValidationError('頭像檔案大小不得超過 2MB。')
+        if avatar:
+            if avatar.size > 2 * 1024 * 1024:  # 限制 2MB
+                raise forms.ValidationError('頭像檔案大小不得超過 2MB。')
+            if not avatar.name.lower().endswith(('.png', '.jpg', '.jpeg')):
+                raise forms.ValidationError('僅支援 PNG 或 JPEG 格式的頭像。')
         return avatar

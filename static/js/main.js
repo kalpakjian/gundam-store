@@ -1,4 +1,16 @@
-const date = new Date();
-document.querySelector(".year").innerHTML = date.getFullYear();
+document.addEventListener('DOMContentLoaded', () => {
+    // 更新年份
+    const date = new Date();
+    const yearElement = document.querySelector('.year');
+    if (yearElement) {
+        yearElement.innerHTML = date.getFullYear();
+    }
 
-setTimeout(() => $("#message").fadeOut("slow"), 3000);
+    // 訊息淡出
+    const messageElement = document.querySelector('#message');
+    if (messageElement) {
+        setTimeout(() => {
+            messageElement.style.display = 'none';
+        }, 4000); // 等待 3s + 1s 動畫
+    }
+});

@@ -116,3 +116,12 @@
     background-color: #7f8c8d;
     border-color: #7f8c8d;
 }
+
+/* static/css/style.css */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+#message {
+    animation: fadeOut 1s ease 3s forwards;
+}
