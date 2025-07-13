@@ -645,6 +645,7 @@
         {"type":"file","name":"admin.css"},
         {"type":"file","name":"all.css"},
         {"type":"file","name":"bootstrap.css"},
+        {"type":"file","name":"bootstrap.min.css"},
         {"type":"file","name":"custom.css"},
         {"type":"file","name":"lightbox.css"},
         {"type":"file","name":"lightbox.min.css"},
@@ -756,11 +757,7 @@
         {"type":"file","name":"bootstrap.bundle.min.js"},
         {"type":"file","name":"custom.js"},
         {"type":"file","name":"jquery-3.3.1.min.js"},
-        {"type":"file","name":"lightbox-plus-jquery.js"},
-        {"type":"file","name":"lightbox-plus-jquery.min.js"},
         {"type":"file","name":"lightbox-plus-jquery.min.map"},
-        {"type":"file","name":"lightbox.js"},
-        {"type":"file","name":"lightbox.min.js"},
         {"type":"file","name":"lightbox.min.map"},
         {"type":"file","name":"main.js"}
       ]},
@@ -874,5 +871,5 @@
     {"type":"file","name":"tree_output.json"}
   ]}
 ,
-  {"type":"report","directories":96,"files":683}
+  {"type":"report","directories":96,"files":680}
 ]
