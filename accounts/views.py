@@ -85,6 +85,14 @@ def logout_view(request):
     return redirect('store:home')
 
 @login_required
+def profile_view(request):
+    try:
+        user_profile = request.user.userprofile
+    except UserProfile.DoesNotExist:
+        user_profile = UserProfile.objects.create(user=request.user)
+    return render(request, 'accounts/profile.html', {'user': request.user, 'user_profile': user_profile})
+
+@login_required
 def update_profile(request):
     try:
         user_profile = request.user.userprofile
@@ -97,7 +105,7 @@ def update_profile(request):
             form.save()
             messages.success(request, '個人資料已更新。')
             logger.info(f"User {request.user.username} updated profile")
-            return redirect('store:profile')
+            return redirect('accounts:profile')
         else:
             messages.error(request, '更新失敗，請檢查輸入資料。')
             logger.warning(f"Profile update failed for user {request.user.username}")

@@ -1,19 +1,25 @@
 {% extends 'store/base.html' %}
 {% load static %}
 
+{% block title %}個人資料 - Gundam 商店{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
-    <h2>顧客資料</h2>
-    <div class="row">
-        <div class="col-md-4">
-            <img src="{% static user.customer_profile.avatar %}" alt="頭像" class="img-fluid rounded-circle" style="max-width: 150px;">
-        </div>
-        <div class="col-md-8">
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">儲存</button>
-            </form>
+    <h2 class="page-title">個人資料</h2>
+    <div class="card">
+        <div class="card-body">
+            <p><strong>用戶名：</strong> {{ user.username }}</p>
+            <p><strong>電子郵件：</strong> {{ user.email|default:"未提供" }}</p>
+            {% if user_profile %}
+                {% if user_profile.avatar %}
+                    <p><strong>頭像：</strong><img src="{{ user_profile.avatar.url }}" alt="頭像" style="max-width: 100px; max-height: 100px;"></p>
+                {% endif %}
+                <p><strong>電話：</strong> {{ user_profile.phone|default:"未提供" }}</p>
+                <p><strong>地址：</strong> {{ user_profile.address|default:"未提供" }}</p>
+            {% else %}
+                <p>無額外個人資料。</p>
+            {% endif %}
+            <a href="{% url 'accounts:update_profile' %}" class="btn btn-primary">編輯資料</a>
         </div>
     </div>
 </div>

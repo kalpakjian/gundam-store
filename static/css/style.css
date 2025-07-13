@@ -151,6 +151,14 @@
     border-color: #ffffff;
 }
 
+/* 確保下拉選單顯示 */
+.navbar-nav .dropdown-menu {
+    display: none;
+}
+.navbar-nav .dropdown-menu.show {
+    display: block;
+}
+
 /* 搜尋欄位樣式 */
 .navbar .form-control {
     background-color: #ffffff;
@@ -171,17 +179,17 @@
 }
 
 /* 搜尋欄位靠右調整 */
-.navbar-nav.ms-auto .nav-item.search-form {
+.navbar-nav.ms-auto .nav-item {
     margin-right: 0;
     margin-left: 10px;
 }
-.navbar-nav.ms-auto .nav-item.search-form .d-flex {
+.navbar-nav.ms-auto .nav-item .d-flex {
     margin-right: 0;
 }
-.navbar-nav.ms-auto .nav-item.search-form .form-control {
+.navbar-nav.ms-auto .nav-item .form-control {
     width: 200px;
 }
-.navbar-nav.ms-auto .nav-item.search-form .btn {
+.navbar-nav.ms-auto .nav-item .btn {
     margin-left: 5px;
 }
 
