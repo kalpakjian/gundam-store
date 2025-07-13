@@ -13,7 +13,7 @@
 </head>
 <body>
     <!-- 導航欄 -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'store:home' %}">Gundam 商店</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +32,14 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
+                    <!-- 搜尋表單 -->
+                    <li class="nav-item">
+                        <form class="d-flex" action="{% url 'store:search' %}" method="get">
+                            <input class="form-control me-2" type="search" name="q" placeholder="搜尋產品" aria-label="Search">
+                            <button class="btn btn-outline-light" type="submit">搜尋</button>
+                        </form>
+                    </li>
+                    <!-- 用戶選單 -->
                     {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -87,13 +95,14 @@
 
     <!-- 頁尾 -->
     <footer class="bg-light py-3 text-center">
-        <p>© 2025 Gundam 線上商店. All rights reserved.</p>
+        <p>© <span class="year">2025</span> Gundam 線上商店. All rights reserved.</p>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <!-- 自定義 JS -->
     <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

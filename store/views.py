@@ -22,12 +22,8 @@ logger = logging.getLogger(__name__)
 
 # 首頁
 def home(request):
-    # 獲取特色產品（隨機三個有折扣的產品）
     featured_products = Product.objects.filter(discount_price__isnull=False).order_by('?')[:3]
-    
-    # 獲取最新的五個產品（不排除特價產品）
     latest_products = Product.objects.order_by('-created_at')[:5]
-    
     context = {
         'featured_products': featured_products,
         'latest_products': latest_products,
@@ -94,7 +90,7 @@ def search_products(request):
     products = Product.objects.filter(
         Q(name__icontains=query) | Q(description__icontains=query)
     ) if query else Product.objects.all()
-    paginator = Paginator(products, 12)
+    paginator = Paginator(products, 9)  # 與 product_list 保持一致
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
@@ -103,7 +99,8 @@ def search_products(request):
         'login_form': AuthenticationForm(),
         'register_form': UserCreationForm()
     }
-    return render(request, 'store/search_results.html', context)
+    logger.debug(f'Search query: {query}, Results: {products.count()}')
+    return render(request, 'store/product_list.html', context)  # 重用 product_list.html
 
 # 圖片分享
 def share_images(request):
@@ -165,14 +162,12 @@ def upload_image(request):
 
 # 購物車
 def cart(request):
-    # 確保 session_key 存在
     session_key = request.session.session_key
     if not session_key:
         request.session.create()
         session_key = request.session.session_key
     logger.debug(f"Session key: {session_key}, User: {request.user if request.user.is_authenticated else 'Anonymous'}")
 
-    # 動態查詢或創建購物車
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(
             user=request.user,
@@ -207,14 +202,12 @@ def add_to_cart(request, product_id):
         messages.error(request, f'庫存不足，僅剩 {product.stock} 件！')
         return redirect('store:product_detail', pk=product_id)
 
-    # 確保 session_key 存在
     session_key = request.session.session_key
     if not session_key:
         request.session.create()
         session_key = request.session.session_key
     logger.debug(f"Session key: {session_key}, User: {request.user if request.user.is_authenticated else 'Anonymous'}")
 
-    # 動態查詢或創建購物車
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(
             user=request.user,
@@ -227,7 +220,6 @@ def add_to_cart(request, product_id):
         )
     logger.debug(f"Cart: {cart}, Created: {created}")
 
-    # 查找或創建購物車項目
     cart_item, item_created = CartItem.objects.get_or_create(
         cart=cart,
         product=product,
@@ -247,14 +239,12 @@ def update_cart(request):
         messages.error(request, '無效的請求方式。')
         return redirect('store:cart')
 
-    # 確保 session_key 存在
     session_key = request.session.session_key
     if not session_key:
         request.session.create()
         session_key = request.session.session_key
     logger.debug(f"Session key: {session_key}, User: {request.user if request.user.is_authenticated else 'Anonymous'}")
 
-    # 動態查詢或創建購物車
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(
             user=request.user,
@@ -296,14 +286,12 @@ def remove_from_cart(request, item_id):
 
 # 結帳
 def checkout(request):
-    # 確保 session_key 存在
     session_key = request.session.session_key
     if not session_key:
         request.session.create()
         session_key = request.session.session_key
     logger.debug(f"Session key: {session_key}, User: {request.user if request.user.is_authenticated else 'Anonymous'}")
 
-    # 動態查詢或創建購物車
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(
             user=request.user,
@@ -316,7 +304,6 @@ def checkout(request):
         )
     logger.debug(f"Cart: {cart}, Created: {created}")
 
-    # 獲取預設地址（僅限登錄用戶）
     default_address = ''
     if request.user.is_authenticated:
         try:
@@ -326,21 +313,17 @@ def checkout(request):
             UserProfile.objects.create(user=request.user)
 
     if request.method == 'POST':
-        # 檢查購物車是否為空
         if not cart.items.exists():
             messages.error(request, '購物車為空！')
             return render(request, 'store/checkout.html', {'cart': cart, 'default_address': default_address})
 
-        # 檢查庫存
         for item in cart.items.all():
             if item.product.stock < item.quantity:
                 messages.error(request, f'{item.product.name} 庫存不足，僅剩 {item.product.stock} 件！')
                 return render(request, 'store/checkout.html', {'cart': cart, 'default_address': default_address})
 
-        # 獲取送貨地址
         shipping_address = request.POST.get('shipping_address', '').strip()
         if request.user.is_authenticated and not shipping_address:
-            # 登錄用戶：使用 UserProfile.address 作為預設值
             try:
                 shipping_address = request.user.userprofile.address
             except UserProfile.DoesNotExist:
@@ -350,7 +333,6 @@ def checkout(request):
             messages.error(request, '請輸入送貨地址！')
             return render(request, 'store/checkout.html', {'cart': cart, 'default_address': default_address})
 
-        # 可選：如果登錄用戶提交新地址，更新 UserProfile
         if request.user.is_authenticated and shipping_address != request.user.userprofile.address:
             try:
                 request.user.userprofile.address = shipping_address
@@ -360,10 +342,8 @@ def checkout(request):
                 from accounts.models import UserProfile
                 UserProfile.objects.create(user=request.user, address=shipping_address)
 
-        # 計算總價
         total_price = sum(item.get_subtotal() for item in cart.items.all())
 
-        # 創建訂單（使用事務確保數據一致性）
         with transaction.atomic():
             order = Order.objects.create(
                 user=request.user if request.user.is_authenticated else None,
@@ -373,7 +353,6 @@ def checkout(request):
                 status='pending'
             )
 
-            # 創建訂單項目並更新庫存
             for item in cart.items.all():
                 price = item.product.discount_price if item.product.discount_price else item.product.price
                 OrderItem.objects.create(
@@ -385,7 +364,6 @@ def checkout(request):
                 item.product.stock -= item.quantity
                 item.product.save()
 
-            # 清空購物車
             cart.items.all().delete()
 
         messages.success(request, '訂單已提交！')
@@ -402,7 +380,6 @@ def checkout(request):
 # 用戶個人資料
 @login_required
 def profile_view(request):
-    # 確保 UserProfile 存在
     profile = get_object_or_404(UserProfile, user=request.user)
     
     if request.method == 'POST':
@@ -412,7 +389,6 @@ def profile_view(request):
             address = request.POST.get('address', '').strip()
             avatar = request.FILES.get('avatar')
             
-            # 驗證輸入
             if not email:
                 messages.error(request, '電子郵件不能為空！')
             elif len(first_name) > 50:
@@ -424,12 +400,10 @@ def profile_view(request):
             elif avatar and avatar.size > 2 * 1024 * 1024:  # 2MB
                 messages.error(request, '頭像檔案大小不得超過 2MB！')
             else:
-                # 更新 User 資料
                 request.user.first_name = first_name
                 request.user.email = email
                 request.user.save()
                 
-                # 更新 UserProfile 資料
                 profile.address = address
                 if avatar:
                     profile.avatar = avatar

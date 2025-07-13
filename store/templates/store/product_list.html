@@ -3,61 +3,36 @@
 
 {% block title %}產品列表 - Gundam 商店{% endblock %}
 
-{% block extra_css %}
-<style>
-    .product-img-container {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 16 / 9; /* 確保 16:9 比例 */
-        overflow: hidden;
-    }
-    .product-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* 保持圖片比例，填滿容器 */
-        transition: transform 0.3s ease; /* 懸停動畫效果 */
-    }
-    .product-img:hover {
-        transform: scale(1.05); /* 懸停時略微放大 */
-    }
-    .title-container {
-        display: flex;
-        justify-content: space-between; /* 名稱左對齊，圖示右對齊 */
-        align-items: center; /* 垂直居中 */
-        margin-bottom: 1rem; /* 與下方價格的間距 */
-    }
-    .scale-icon {
-        max-width: 64px; /* 與詳情頁一致 */
-        height: auto; /* 保持圖示比例 */
-    }
-</style>
-{% endblock %}
-
 {% block content %}
-<div class="container">
-    <h1 class="mb-4">所有產品</h1>
+<div class="container mt-5">
+    <h2 class="page-title">所有產品</h2>
+    {% if query %}
+        <p class="section-title">搜尋 "{{ query }}" 的結果</p>
+    {% endif %}
     <div class="row">
         {% for product in page_obj %}
-            <div class="col-md-4 col-sm-6 mb-4">
-                <div class="card h-100">
-                    <a href="{% url 'store:product_detail' product.pk %}" class="product-img-container">
+            <div class="col-md-4 mb-4">
+                <div class="card square-card">
+                    <a href="{% url 'store:product_detail' product.id %}">
                         {% if product.get_cover_url %}
-                            <img src="{{ product.get_cover_url }}" class="product-img" alt="{{ product.name }}">
+                            <img class="card-img-top product-image" src="{{ product.get_cover_url }}" alt="{{ product.name }}">
                         {% else %}
-                            <img src="https://via.placeholder.com/320x180?text=No+Image" class="product-img" alt="No Image">
+                            <img class="card-img-top product-image" src="{% static 'images/no-image.png' %}" alt="無圖片">
                         {% endif %}
                     </a>
                     <div class="card-body">
-                        <div class="title-container">
+                        <div class="d-flex align-items-center justify-content-between">
                             <h5 class="card-title mb-0">{{ product.name }}</h5>
                             {% if product.scale %}
-                                <img src="{% static 'scale/'|add:product.scale|lower|add:'.webp' %}" alt="{{ product.scale }} icon" class="scale-icon">
+                                <img class="scale-icon" src="{% static 'scale/'|add:product.scale|lower|add:'.webp' %}" alt="{{ product.scale }} icon">
                             {% endif %}
                         </div>
+                    </div>
+                    <div class="card-footer">
                         <p class="card-text">
                             {% if product.discount_price %}
-                                <span class="text-decoration-line-through text-muted">{{ product.price }} 元</span>
-                                <strong class="text-danger">{{ product.discount_price }} 元</strong>
+                                <span class="text-decoration-line-through">{{ product.price }} 元</span>
+                                <span class="text-danger">{{ product.discount_price }} 元</span>
                             {% else %}
                                 {{ product.price }} 元
                             {% endif %}
@@ -66,43 +41,39 @@
                 </div>
             </div>
         {% empty %}
-            <p class="text-muted">目前沒有產品。</p>
+            <p class="empty-cart">目前沒有產品{% if query %}，請嘗試其他關鍵字{% endif %}。</p>
         {% endfor %}
     </div>
-
-    <!-- 分頁導航 -->
     {% if page_obj.has_previous or page_obj.has_next %}
-        <nav aria-label="產品分頁">
+        <nav aria-label="Page navigation">
             <ul class="pagination justify-content-center">
                 {% if page_obj.has_previous %}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">上一頁</a>
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">上一頁</a>
                     </li>
                 {% else %}
                     <li class="page-item disabled">
-                        <span class="page-link">上一頁</span>
+                        <a class="page-link" href="#">上一頁</a>
                     </li>
                 {% endif %}
-
                 {% for num in page_obj.paginator.page_range %}
                     {% if page_obj.number == num %}
                         <li class="page-item active">
-                            <span class="page-link">{{ num }}</span>
+                            <a class="page-link" href="#">{{ num }}</a>
                         </li>
                     {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %}
                         <li class="page-item">
-                            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                            <a class="page-link" href="?page={{ num }}{% if query %}&q={{ query }}{% endif %}">{{ num }}</a>
                         </li>
                     {% endif %}
                 {% endfor %}
-
                 {% if page_obj.has_next %}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">下一頁</a>
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">下一頁</a>
                     </li>
                 {% else %}
                     <li class="page-item disabled">
-                        <span class="page-link">下一頁</span>
+                        <a class="page-link" href="#">下一頁</a>
                     </li>
                 {% endif %}
             </ul>
