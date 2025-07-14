@@ -321,41 +321,10 @@ def checkout(request):
 # 用戶個人資料
 @login_required
 def profile_view(request):
-    profile = get_object_or_404(UserProfile, user=request.user)
-    
-    if request.method == 'POST':
-        try:
-            first_name = request.POST.get('first_name', '').strip()
-            email = request.POST.get('email', '').strip()
-            address = request.POST.get('address', '').strip()
-            avatar = request.FILES.get('avatar')
-            
-            if not email:
-                messages.error(request, '電子郵件不能為空！')
-            elif len(first_name) > 50:
-                messages.error(request, '姓名長度不能超過 50 個字元！')
-            elif len(address) > 200:
-                messages.error(request, '地址長度不能超過 200 個字元！')
-            elif avatar and not avatar.name.lower().endswith(('.jpg', '.jpeg', '.png')):
-                messages.error(request, '頭像僅支援 JPG 或 PNG 格式！')
-            elif avatar and avatar.size > 2 * 1024 * 1024:  # 2MB
-                messages.error(request, '頭像檔案大小不得超過 2MB！')
-            else:
-                request.user.first_name = first_name
-                request.user.email = email
-                request.user.save()
-                
-                profile.address = address
-                if avatar:
-                    profile.avatar = avatar
-                profile.save()
-                
-                logger.info(f"User {request.user.username} updated profile: first_name={first_name}, email={email}, address={address}, avatar={avatar}")
-                messages.success(request, '個人資料已更新！')
-        except Exception as e:
-            logger.error(f"Error updating profile for user {request.user.username}: {str(e)}")
-            messages.error(request, '更新個人資料失敗，請稍後再試！')
-        return redirect('store:profile')
+    try:
+        profile = request.user.userprofile
+    except UserProfile.DoesNotExist:
+        profile = UserProfile.objects.create(user=request.user)
     
     try:
         recent_orders = Order.objects.filter(user=request.user).order_by('-created_at').select_related('user').prefetch_related('items__product')[:5]

@@ -87,10 +87,25 @@ def logout_view(request):
 @login_required
 def profile_view(request):
     try:
-        user_profile = request.user.userprofile
+        profile = request.user.userprofile
     except UserProfile.DoesNotExist:
-        user_profile = UserProfile.objects.create(user=request.user)
-    return render(request, 'accounts/profile.html', {'user': request.user, 'user_profile': user_profile})
+        profile = UserProfile.objects.create(user=request.user)
+    
+    # 獲取近期訂單（需要導入Order模型）
+    from store.models import Order
+    try:
+        recent_orders = Order.objects.filter(user=request.user).order_by('-created_at').select_related('user').prefetch_related('items__product')[:5]
+        logger.info(f"Retrieved {recent_orders.count()} recent orders for user {request.user.username}")
+    except Exception as e:
+        logger.error(f"Error retrieving orders for user {request.user.username}: {str(e)}")
+        recent_orders = []
+    
+    context = {
+        'user': request.user,
+        'profile': profile,
+        'recent_orders': recent_orders,
+    }
+    return render(request, 'store/profile.html', context)
 
 @login_required
 def update_profile(request):
