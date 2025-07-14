@@ -22,9 +22,7 @@
         {"type":"directory","name":"commands","contents":[
           {"type":"directory","name":"__pycache__","contents":[
             {"type":"file","name":"populate_members.cpython-310.pyc"}
-          ]},
-          {"type":"file","name":"populate_members.py"},
-          {"type":"file","name":"rename_and_convert_avatars.py"}
+          ]}
         ]}
       ]},
       {"type":"directory","name":"migrations","contents":[
@@ -625,22 +623,6 @@
         {"type":"file","name":"BD.png"},
         {"type":"file","name":"Gquuuuuux_JP_logo.svg.png"}
       ]},
-      {"type":"directory","name":"cloudinary","contents":[
-        {"type":"directory","name":"html","contents":[
-          {"type":"file","name":"cloudinary_cors.html"}
-        ]},
-        {"type":"directory","name":"js","contents":[
-          {"type":"file","name":"canvas-to-blob.min.js"},
-          {"type":"file","name":"jquery.cloudinary.js"},
-          {"type":"file","name":"jquery.fileupload-image.js"},
-          {"type":"file","name":"jquery.fileupload-process.js"},
-          {"type":"file","name":"jquery.fileupload-validate.js"},
-          {"type":"file","name":"jquery.fileupload.js"},
-          {"type":"file","name":"jquery.iframe-transport.js"},
-          {"type":"file","name":"jquery.ui.widget.js"},
-          {"type":"file","name":"load-image.all.min.js"}
-        ]}
-      ]},
       {"type":"directory","name":"css","contents":[
         {"type":"file","name":"admin.css"},
         {"type":"file","name":"all.css"},
@@ -851,9 +833,7 @@
           {"type":"file","name":"product_detail.html"},
           {"type":"file","name":"product_list.html"},
           {"type":"file","name":"profile.html"},
-          {"type":"file","name":"search_results.html"},
-          {"type":"file","name":"share_images.html"},
-          {"type":"file","name":"upload_image.html"}
+          {"type":"file","name":"search_results.html"}
         ]}
       ]},
       {"type":"directory","name":"templatetags","contents":[
@@ -871,5 +851,5 @@
     {"type":"file","name":"tree_output.json"}
   ]}
 ,
-  {"type":"report","directories":96,"files":680}
+  {"type":"report","directories":93,"files":666}
 ]

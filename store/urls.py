@@ -9,12 +9,8 @@ urlpatterns = [
     path('products/<int:pk>/', views.product_detail, name='product_detail'),
     path('categories/', views.category_list, name='category_list'),
     path('categories/<int:pk>/', views.category_detail, name='category_detail'),
-   
     path('search/', views.search_products, name='search'),  # 使用 search_products   
     path('add-to-cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
-
-    path('share-images/', views.share_images, name='share_images'),
-    path('upload-image/', views.upload_image, name='upload_image'),
     path('cart/', views.cart, name='cart'),
     path('cart/add/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
     path('cart/update/', views.update_cart, name='update_cart'),

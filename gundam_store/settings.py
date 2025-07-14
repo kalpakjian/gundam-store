@@ -6,7 +6,7 @@ Django settings for gundam_store project.
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-# import cloudinary  # 暫時註解 Cloudinary 相關設定
+import cloudinary
 
 load_dotenv()
 
@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'cloudinary',  # 註解 Cloudinary
     # 'cloudinary_storage',  # 註解 Cloudinary 儲存
+    'django_extensions',
     'store.apps.StoreConfig',
     'accounts.apps.AccountsConfig',
     'widget_tweaks',
