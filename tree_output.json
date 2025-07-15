@@ -61,7 +61,6 @@
           {"type":"file","name":"logged_out.html"},
           {"type":"file","name":"login_modal.html"},
           {"type":"file","name":"login.html"},
-          {"type":"file","name":"profile.html"},
           {"type":"file","name":"register_modal.html"},
           {"type":"file","name":"register.html"},
           {"type":"file","name":"update_profile.html"}
@@ -851,5 +850,5 @@
     {"type":"file","name":"tree_output.json"}
   ]}
 ,
-  {"type":"report","directories":93,"files":666}
+  {"type":"report","directories":93,"files":665}
 ]
