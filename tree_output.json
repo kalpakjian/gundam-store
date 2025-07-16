@@ -100,7 +100,11 @@
     ]},
     {"type":"file","name":"manage.py"},
     {"type":"directory","name":"media","contents":[
-      {"type":"directory","name":"avatars"},
+      {"type":"directory","name":"avatars","contents":[
+        {"type":"file","name":"avatar_008_cMqxiaD.png"},
+        {"type":"file","name":"avatar_008_iLqCKmP.png"},
+        {"type":"file","name":"avatar_008.png"}
+      ]},
       {"type":"directory","name":"products","contents":[
         {"type":"directory","name":"covers","contents":[
           {"type":"file","name":"1660536414_193_4261_s_a29gwrtvyplo5f65vrmb3zz9dgul.webp"},
@@ -647,6 +651,19 @@
           {"type":"file","name":"utils.js"}
         ]}
       ]},
+      {"type":"directory","name":"django_extensions","contents":[
+        {"type":"directory","name":"css","contents":[
+          {"type":"file","name":"jquery.autocomplete.css"}
+        ]},
+        {"type":"directory","name":"img","contents":[
+          {"type":"file","name":"indicator.gif"}
+        ]},
+        {"type":"directory","name":"js","contents":[
+          {"type":"file","name":"jquery.ajaxQueue.js"},
+          {"type":"file","name":"jquery.autocomplete.js"},
+          {"type":"file","name":"jquery.bgiframe.js"}
+        ]}
+      ]},
       {"type":"directory","name":"glightbox","contents":[
         {"type":"directory","name":"css","contents":[
           {"type":"file","name":"glightbox.css"},
@@ -808,7 +825,8 @@
           {"type":"file","name":"0006_migrate_banner_image.cpython-310.pyc"},
           {"type":"file","name":"0007_alter_product_scale.cpython-310.pyc"},
           {"type":"file","name":"0008_customuser.cpython-310.pyc"},
-          {"type":"file","name":"0009_delete_customuser.cpython-310.pyc"}
+          {"type":"file","name":"0009_delete_customuser.cpython-310.pyc"},
+          {"type":"file","name":"0010_merge_20250716_1646.cpython-310.pyc"}
         ]},
         {"type":"file","name":"0001_initial.py"},
         {"type":"file","name":"0002_product_cloudinary_url_productimage_cloudinary_url.py"},
@@ -819,7 +837,8 @@
         {"type":"file","name":"0006_migrate_banner_image.py"},
         {"type":"file","name":"0007_alter_product_scale.py"},
         {"type":"file","name":"0008_customuser.py"},
-        {"type":"file","name":"0009_delete_customuser.py"}
+        {"type":"file","name":"0009_delete_customuser.py"},
+        {"type":"file","name":"0010_merge_20250716_1646.py"}
       ]},
       {"type":"file","name":"models.py"},
       {"type":"directory","name":"templates","contents":[
@@ -829,7 +848,6 @@
           {"type":"file","name":"category_detail.html"},
           {"type":"file","name":"category_list.html"},
           {"type":"file","name":"checkout.html"},
-          {"type":"file","name":"click"},
           {"type":"file","name":"home.html"},
           {"type":"file","name":"orders.html"},
           {"type":"file","name":"product_detail.html"},
@@ -852,5 +870,5 @@
     {"type":"file","name":"tree_output.json"}
   ]}
 ,
-  {"type":"report","directories":93,"files":667}
+  {"type":"report","directories":97,"files":676}
 ]

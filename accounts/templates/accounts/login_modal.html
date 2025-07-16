@@ -10,11 +10,18 @@
             <div class="modal-body">
                 <form id="loginForm" method="post" action="{% url 'accounts:login' %}">
                     {% csrf_token %}
-                    {{ form.as_p }}
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">用戶名</label>
+                        <input type="text" class="form-control" id="id_username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_password" class="form-label">密碼</label>
+                        <input type="password" class="form-control" id="id_password" name="password" required>
+                    </div>
                     <button type="submit" class="btn btn-primary">登入</button>
-                    <a href="{% url 'accounts:register' %}" class="btn btn-link">沒有帳號？立即註冊</a>
+                    <a href="#" class="btn btn-link" onclick="switchToRegisterModal()">沒有帳號？立即註冊</a>
                 </form>
-                <div id="formErrors" class="text-danger mt-3"></div>
+                <div id="loginFormErrors" class="text-danger mt-3"></div>
             </div>
         </div>
     </div>
@@ -24,7 +31,7 @@
     document.getElementById('loginForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const form = e.target;
-        const errorDiv = document.getElementById('formErrors');
+        const errorDiv = document.getElementById('loginFormErrors');
         errorDiv.innerHTML = '';
         try {
             const response = await fetch(form.action, {
@@ -37,9 +44,11 @@
                 alert(data.message);
                 const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
                 modal.hide();
-                window.location.href = '{% url 'store:home' %}';
+                window.location.reload();
             } else {
-                errorDiv.innerHTML = `<p>${data.errors.join(', ')}</p>`;
+                for (const [field, errors] of Object.entries(data.errors)) {
+                    errorDiv.innerHTML += `<p>${field}: ${errors.join(', ')}</p>`;
+                }
             }
         } catch (error) {
             errorDiv.innerHTML = '<p>發生錯誤，請稍後再試。</p>';

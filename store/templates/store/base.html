@@ -50,10 +50,10 @@
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:login' %}">登入</a>
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">登入</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:register' %}">註冊</a>
+                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">註冊</a>
                         </li>
                     {% endif %}
                     <li class="nav-item">
@@ -84,6 +84,29 @@
         <p>© 2025 鋼彈線上商店. All rights reserved.</p>
     </footer>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+        function switchToRegisterModal() {
+            const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+            if (loginModal) {
+                loginModal.hide();
+            }
+            setTimeout(() => {
+                const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+                registerModal.show();
+            }, 300);
+        }
+
+        function switchToLoginModal() {
+            const registerModal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
+            if (registerModal) {
+                registerModal.hide();
+            }
+            setTimeout(() => {
+                const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.show();
+            }, 300);
+        }
+    </script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>
