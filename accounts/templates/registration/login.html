@@ -1,12 +1,14 @@
-{% extends 'base.html' %}
-
-{% block title %}登入{% endblock %}
+{% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-    <h2>登入</h2>
-    <form method="post">
+<div class="container mt-5">
+    <h2 class="mb-4">登入</h2>
+    <form method="post" action="{% url 'accounts:login' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">登入</button>
+        <button type="submit" class="btn btn-primary mt-3">登入</button>
+        <a href="{% url 'accounts:register' %}" class="btn btn-link mt-3">還沒有帳號？立即註冊</a>
     </form>
+</div>
 {% endblock %}

@@ -1,58 +1,48 @@
 {% load static %}
+
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content custom-bg">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="loginModalLabel">登入</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="login-form" method="post" action="{% url 'accounts:login' %}">
+                <form id="loginForm" method="post" action="{% url 'accounts:login' %}">
                     {% csrf_token %}
-                    <div id="login-error" class="alert alert-danger d-none"></div>
-                    <div class="mb-3 position-relative">
-                        <label for="username" class="form-label">使用者名稱</label>
-                        <input type="text" class="form-control cart-input" id="username" name="username" placeholder="請輸入您的使用者名稱" required>
-                    </div>
-                    <div class="mb-3 position-relative">
-                        <label for="password" class="form-label">密碼</label>
-                        <input type="password" class="form-control cart-input" id="password" name="password" placeholder="請輸入您的密碼" required>
-                    </div>
+                    {{ form.as_p }}
                     <button type="submit" class="btn btn-primary">登入</button>
-                    <a href="#" class="ms-2" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#registerModal">沒有帳號？註冊</a>
+                    <a href="{% url 'accounts:register' %}" class="btn btn-link">沒有帳號？立即註冊</a>
                 </form>
+                <div id="formErrors" class="text-danger mt-3"></div>
             </div>
         </div>
     </div>
 </div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('login-form');
-    const errorDiv = document.getElementById('login-error');
-    
-    form.addEventListener('submit', async function(event) {
-        event.preventDefault();
-        errorDiv.classList.add('d-none');
-        errorDiv.innerHTML = '';
 
-        const formData = new FormData(form);
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const errorDiv = document.getElementById('formErrors');
+        errorDiv.innerHTML = '';
         try {
             const response = await fetch(form.action, {
                 method: 'POST',
-                headers: { 'X-Requested-With': 'XMLHttpRequest' },
-                body: formData
+                body: new FormData(form),
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
             });
             const data = await response.json();
             if (data.success) {
-                window.location.reload();
+                alert(data.message);
+                const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+                modal.hide();
+                window.location.href = '{% url 'store:home' %}';
             } else {
-                errorDiv.classList.remove('d-none');
-                errorDiv.innerHTML = data.errors.join('<br>');
+                errorDiv.innerHTML = `<p>${data.errors.join(', ')}</p>`;
             }
         } catch (error) {
-            errorDiv.classList.remove('d-none');
-            errorDiv.innerHTML = '發生錯誤，請稍後再試。';
+            errorDiv.innerHTML = '<p>發生錯誤，請稍後再試。</p>';
         }
     });
-});
 </script>

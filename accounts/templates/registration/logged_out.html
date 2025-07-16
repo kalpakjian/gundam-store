@@ -1,9 +1,11 @@
 {% extends "base.html" %}
-
-{% block title %}已登出{% endblock %}
+{% load static %}
 
 {% block content %}
-    <h1>已登出</h1>
-    <p>您已經成功登出。</p>
-    <a href="{% url 'login' %}">再次登入</a>
+<div class="container mt-5">
+    <h2 class="mb-4">已登出</h2>
+    <p>您已成功登出。</p>
+    <a href="{% url 'store:home' %}" class="btn btn-primary">回主頁</a>
+    <a href="{% url 'accounts:login' %}" class="btn btn-link">重新登入</a>
+</div>
 {% endblock %}

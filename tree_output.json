@@ -40,7 +40,8 @@
           {"type":"file","name":"0009_alter_userprofile_address_alter_userprofile_avatar.cpython-310.pyc"},
           {"type":"file","name":"0010_alter_userprofile_address_alter_userprofile_avatar.cpython-310.pyc"},
           {"type":"file","name":"0011_alter_userprofile_avatar.cpython-310.pyc"},
-          {"type":"file","name":"0012_alter_userprofile_avatar.cpython-310.pyc"}
+          {"type":"file","name":"0012_alter_userprofile_avatar.cpython-310.pyc"},
+          {"type":"file","name":"0013_alter_userprofile_options_alter_userprofile_address_and_more.cpython-310.pyc"}
         ]},
         {"type":"file","name":"0001_initial.py"},
         {"type":"file","name":"0002_delete_customerprofile.py"},
@@ -53,22 +54,22 @@
         {"type":"file","name":"0009_alter_userprofile_address_alter_userprofile_avatar.py"},
         {"type":"file","name":"0010_alter_userprofile_address_alter_userprofile_avatar.py"},
         {"type":"file","name":"0011_alter_userprofile_avatar.py"},
-        {"type":"file","name":"0012_alter_userprofile_avatar.py"}
+        {"type":"file","name":"0012_alter_userprofile_avatar.py"},
+        {"type":"file","name":"0013_alter_userprofile_options_alter_userprofile_address_and_more.py"}
       ]},
       {"type":"file","name":"models.py"},
       {"type":"directory","name":"templates","contents":[
         {"type":"directory","name":"accounts","contents":[
-          {"type":"file","name":"logged_out.html"},
           {"type":"file","name":"login_modal.html"},
-          {"type":"file","name":"login.html"},
+          {"type":"file","name":"profile.html"},
           {"type":"file","name":"register_modal.html"},
-          {"type":"file","name":"register.html"},
           {"type":"file","name":"update_profile.html"}
         ]},
         {"type":"file","name":"base.html"},
         {"type":"directory","name":"registration","contents":[
           {"type":"file","name":"logged_out.html"},
-          {"type":"file","name":"login.html"}
+          {"type":"file","name":"login.html"},
+          {"type":"file","name":"register.html"}
         ]}
       ]},
       {"type":"file","name":"tests.py"},
@@ -804,6 +805,7 @@
           {"type":"file","name":"0004_cart_cartitem_order_orderitem.cpython-310.pyc"},
           {"type":"file","name":"0005_category_banner_path.cpython-310.pyc"},
           {"type":"file","name":"0006_alter_product_scale.cpython-310.pyc"},
+          {"type":"file","name":"0006_migrate_banner_image.cpython-310.pyc"},
           {"type":"file","name":"0007_alter_product_scale.cpython-310.pyc"},
           {"type":"file","name":"0008_customuser.cpython-310.pyc"},
           {"type":"file","name":"0009_delete_customuser.cpython-310.pyc"}
@@ -814,6 +816,7 @@
         {"type":"file","name":"0004_cart_cartitem_order_orderitem.py"},
         {"type":"file","name":"0005_category_banner_path.py"},
         {"type":"file","name":"0006_alter_product_scale.py"},
+        {"type":"file","name":"0006_migrate_banner_image.py"},
         {"type":"file","name":"0007_alter_product_scale.py"},
         {"type":"file","name":"0008_customuser.py"},
         {"type":"file","name":"0009_delete_customuser.py"}
@@ -831,7 +834,6 @@
           {"type":"file","name":"orders.html"},
           {"type":"file","name":"product_detail.html"},
           {"type":"file","name":"product_list.html"},
-          {"type":"file","name":"profile.html"},
           {"type":"file","name":"search_results.html"}
         ]}
       ]},
@@ -850,5 +852,5 @@
     {"type":"file","name":"tree_output.json"}
   ]}
 ,
-  {"type":"report","directories":93,"files":665}
+  {"type":"report","directories":93,"files":667}
 ]
