@@ -47,26 +47,41 @@
                 body: new FormData(form),
                 headers: { 'X-Requested-With': 'XMLHttpRequest' }
             });
+            
+            // 嘗試解析 JSON 響應，無論狀態碼如何
             const data = await response.json();
+            
             if (data.success) {
                 const modal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
-                modal.hide();
+                if (modal) {
+                    modal.hide();
+                }
                 // 顯示成功訊息
                 const successDiv = document.createElement('div');
                 successDiv.className = 'alert alert-success alert-dismissible fade show';
                 successDiv.innerHTML = `${data.message} <button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
                 document.querySelector('.container.mt-4').prepend(successDiv);
-                // 延遲 1 秒後重新載入頁面
+                // 延遲後重新載入頁面
                 setTimeout(() => {
                     window.location.reload();
                 }, 1000);
             } else {
-                for (const [field, errors] of Object.entries(data.errors)) {
-                    errorDiv.innerHTML += `<p>${field}: ${errors.join(', ')}</p>`;
+                // 處理註冊失敗
+                if (data.errors) {
+                    for (const [field, errors] of Object.entries(data.errors)) {
+                        if (field === '__all__') {
+                            errorDiv.innerHTML += `<p>${errors.join(', ')}</p>`;
+                        } else {
+                            errorDiv.innerHTML += `<p>${field}: ${errors.join(', ')}</p>`;
+                        }
+                    }
+                } else {
+                    errorDiv.innerHTML = '<p>註冊失敗，請檢查您的輸入資料。</p>';
                 }
             }
         } catch (error) {
-            errorDiv.innerHTML = '<p>發生錯誤，請稍後再試。</p>';
+            console.error('Register error:', error);
+            errorDiv.innerHTML = '<p>網路連線錯誤，請稍後再試。</p>';
         }
     });
 </script>
