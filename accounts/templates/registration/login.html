@@ -1,14 +1,138 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}登入 - 鋼彈商店{% endblock %}
+
+{% block extra_css %}
+<style>
+    .login-container {
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        margin-top: 3rem;
+    }
+    
+    .login-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 10px;
+        padding: 2rem;
+        backdrop-filter: blur(10px);
+    }
+    
+    .login-title {
+        color: #333;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-size: 1.8rem;
+    }
+    
+    .form-floating {
+        margin-bottom: 1rem;
+    }
+    
+    .form-floating > .form-control {
+        border: 2px solid #e9ecef;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    
+    .form-floating > .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+    
+    .btn-login {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 10px;
+        padding: 0.75rem 2rem;
+        font-weight: 600;
+        width: 100%;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    .register-link {
+        text-align: center;
+        margin-top: 1rem;
+    }
+    
+    .register-link a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+    
+    .register-link a:hover {
+        color: #764ba2;
+    }
+    
+    .gundam-icon {
+        text-align: center;
+        margin-bottom: 1rem;
+        font-size: 3rem;
+        color: #667eea;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="container mt-5">
-    <h2 class="mb-4">登入</h2>
-    <form method="post" action="{% url 'accounts:login' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary mt-3">登入</button>
-        <a href="{% url 'accounts:register' %}" class="btn btn-link mt-3">還沒有帳號？立即註冊</a>
-    </form>
+<div class="container">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="gundam-icon">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h2 class="login-title">歡迎回來</h2>
+            
+            {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <div>{{ error }}</div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+            <form method="post" action="{% url 'accounts:login' %}">
+                {% csrf_token %}
+                
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="id_username" name="username" 
+                           placeholder="用戶名" value="{{ form.username.value|default:'' }}" required>
+                    <label for="id_username">
+                        <i class="fas fa-user me-2"></i>用戶名
+                    </label>
+                </div>
+                
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="id_password" name="password" 
+                           placeholder="密碼" required>
+                    <label for="id_password">
+                        <i class="fas fa-lock me-2"></i>密碼
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-login">
+                    <i class="fas fa-sign-in-alt me-2"></i>登入
+                </button>
+            </form>
+            
+            <div class="register-link">
+                <p class="mb-0">還沒有帳號？ <a href="{% url 'accounts:register' %}">立即註冊</a></p>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
