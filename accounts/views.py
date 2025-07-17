@@ -129,7 +129,7 @@ def update_profile(request):
         logger.info(f"Created UserProfile for user {request.user.username}")
 
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
+        form = UserProfileForm(request.POST, request.FILES, instance=user_profile, user=request.user)
         if form.is_valid():
             form.save()
             messages.success(request, '個人資料已更新。')
@@ -139,7 +139,7 @@ def update_profile(request):
             messages.error(request, '更新失敗，請檢查輸入資料。')
             logger.warning(f"Profile update failed for user {request.user.username}: errors={form.errors}")
     else:
-        form = UserProfileForm(instance=user_profile)
+        form = UserProfileForm(instance=user_profile, user=request.user)
     return render(request, 'accounts/update_profile.html', {'form': form})
 
 def logout_view(request):
