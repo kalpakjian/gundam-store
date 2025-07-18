@@ -62,44 +62,29 @@
         </div>
     </div>
 
-    <!-- 輪播 -->
-    {% if product.get_cover_url or images %}
-        <div class="mt-5">
-            <h3>圖片預覽</h3>
-            <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    {% if product.get_cover_url %}
-                        <div class="carousel-item active">
-                            <a href="{{ product.get_cover_url }}" class="glightbox" data-gallery="product-gallery" data-glightbox="title: {{ product.name }}; description: 產品封面">
-                                <img src="{{ product.get_cover_url }}" class="d-block w-100" alt="{{ product.name }}" style="max-height: 400px; object-fit: cover;">
-                            </a>
-                        </div>
-                    {% endif %}
-                    {% for image in images %}
-                        {% if image.get_image_url %}
-                            <div class="carousel-item">
-                                <a href="{{ image.get_image_url }}" class="glightbox" data-gallery="product-gallery" data-glightbox="title: {{ product.name }}; description: 實物圖">
-                                    <img src="{{ image.get_image_url }}" class="d-block w-100" alt="產品圖片" style="max-height: 400px; object-fit: cover;">
-                                </a>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">上一張</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">下一張</span>
-                </button>
-            </div>
-        </div>
-    {% endif %}
 </div>
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'glightbox/css/glightbox.min.css' %}">
+    <style>
+        /* 圖片懸停放大效果 */
+        .card-img-top,
+        .img-fluid {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .card-img-top:hover,
+        .img-fluid:hover {
+            transform: scale(1.05);
+        }
+        
+        /* 防止放大時溢出容器 */
+        .col-md-6,
+        .col-4 {
+            overflow: hidden;
+        }
+    </style>
 {% endblock %}
 
 {% block extra_js %}
