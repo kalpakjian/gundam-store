@@ -14,7 +14,6 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.core.validators import FileExtensionValidator
 from .models import Product, Category, ProductImage, Cart, CartItem, Order, OrderItem
 from accounts.models import UserProfile
-import cloudinary.uploader
 from django.db import transaction
 
 # 設置日誌
@@ -140,16 +139,6 @@ def upload_image(request):
                     description=description
                 )
                 logger.info(f'Saved local image for product {product.name}: {product_image.image.url}')
-                result = cloudinary.uploader.upload(
-                    product_image.image.path,
-                    folder='gundam_store/images',
-                    resource_type='image',
-                    public_id=f"{product.name}_{os.path.splitext(image_file.name)[0]}",
-                    quality='auto'
-                )
-                product_image.cloudinary_url = result['secure_url']
-                product_image.save()
-                logger.info(f'Uploaded image to Cloudinary for product {product.name}: {result["secure_url"]}')
                 messages.success(request, '圖片上傳成功！')
                 return redirect('store:share_images')
             except Exception as e:
