@@ -300,7 +300,7 @@ def checkout(request):
         with transaction.atomic():
             order = Order.objects.create(
                 user=request.user if request.user.is_authenticated else None,
-                session_key=session_key,
+                session_key=cart.session_key,
                 shipping_address=shipping_address,
                 total_price=total_price,
                 status='pending'
