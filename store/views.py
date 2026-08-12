@@ -10,8 +10,6 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.core.validators import FileExtensionValidator
 from .models import Product, Category, ProductImage, Cart, CartItem, Order, OrderItem
 from accounts.models import UserProfile
 from django.db import transaction
@@ -19,10 +17,30 @@ from django.db import transaction
 # 設置日誌
 logger = logging.getLogger(__name__)
 
+# 購物車輔助函數
+def get_or_create_cart(request):
+    """獲取或創建購物車，統一處理登入/匿名用戶邏輯"""
+    session_key = request.session.session_key
+    if not session_key:
+        request.session.create()
+        session_key = request.session.session_key
+    if request.user.is_authenticated:
+        cart, created = Cart.objects.get_or_create(
+            user=request.user,
+            defaults={'session_key': session_key}
+        )
+    else:
+        cart, created = Cart.objects.get_or_create(
+            session_key=session_key,
+            defaults={'user': None}
+        )
+    logger.debug(f"Cart: {cart}, Created: {created}")
+    return cart
+
 # 首頁
 def home(request):
     # 獲取特色產品（隨機三個有折扣的產品）
-    featured_products = Product.objects.filter(discount_price__isnull=False).order_by('?')[:3]
+    featured_products = Product.objects.filter(discount_price__isnull=False).order_by('-created_at')[:3]
     
     # 獲取最新的五個產品（不排除特價產品）
     latest_products = Product.objects.order_by('-created_at')[:5]
@@ -30,21 +48,17 @@ def home(request):
     context = {
         'featured_products': featured_products,
         'latest_products': latest_products,
-        'login_form': AuthenticationForm(),
-        'register_form': UserCreationForm()
     }
     return render(request, 'store/home.html', context)
 
 # 產品列表
 def product_list(request):
-    products = Product.objects.all().order_by('?')
+    products = Product.objects.all().order_by('-created_at')
     paginator = Paginator(products, 9)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
         'page_obj': page_obj,
-        'login_form': AuthenticationForm(),
-        'register_form': UserCreationForm()
     }
     return render(request, 'store/product_list.html', context)
 
@@ -57,8 +71,6 @@ def product_detail(request, pk):
     context = {
         'product': product,
         'images': images,
-        'login_form': AuthenticationForm(),
-        'register_form': UserCreationForm()
     }
     return render(request, 'store/product_detail.html', context)
 
@@ -67,8 +79,6 @@ def category_list(request):
     categories = Category.objects.all()
     context = {
         'categories': categories,
-        'login_form': AuthenticationForm(),
-        'register_form': UserCreationForm()
     }
     return render(request, 'store/category_list.html', context)
 
@@ -82,8 +92,6 @@ def category_detail(request, pk):
     context = {
         'category': category,
         'page_obj': page_obj,
-        'login_form': AuthenticationForm(),
-        'register_form': UserCreationForm()
     }
     return render(request, 'store/category_detail.html', context)
 
@@ -99,8 +107,6 @@ def search_products(request):
     context = {
         'page_obj': page_obj,
         'query': query,
-        'login_form': AuthenticationForm(),
-        'register_form': UserCreationForm()
     }
     return render(request, 'store/search_results.html', context)
 
@@ -111,8 +117,6 @@ def share_images(request):
     context = {
         'products': products,
         'product_images': product_images,
-        'login_form': AuthenticationForm(),
-        'register_form': UserCreationForm()
     }
     return render(request, 'store/share_images.html', context)
 
@@ -147,37 +151,15 @@ def upload_image(request):
     products = Product.objects.all()
     context = {
         'products': products,
-        'login_form': AuthenticationForm(),
-        'register_form': UserCreationForm()
     }
     return render(request, 'store/upload_image.html', context)
 
 # 購物車
 def cart(request):
-    # 確保 session_key 存在
-    session_key = request.session.session_key
-    if not session_key:
-        request.session.create()
-        session_key = request.session.session_key
-    logger.debug(f"Session key: {session_key}, User: {request.user if request.user.is_authenticated else 'Anonymous'}")
-
-    # 動態查詢或創建購物車
-    if request.user.is_authenticated:
-        cart, created = Cart.objects.get_or_create(
-            user=request.user,
-            defaults={'session_key': session_key}
-        )
-    else:
-        cart, created = Cart.objects.get_or_create(
-            session_key=session_key,
-            defaults={'user': None}
-        )
-    logger.debug(f"Cart: {cart}, Created: {created}")
+    cart = get_or_create_cart(request)
 
     context = {
         'cart': cart,
-        'login_form': AuthenticationForm(),
-        'register_form': UserCreationForm()
     }
     return render(request, 'store/cart.html', context)
 
@@ -188,7 +170,11 @@ def add_to_cart(request, product_id):
         return redirect('store:product_detail', pk=product_id)
 
     product = get_object_or_404(Product, pk=product_id)
-    quantity = int(request.POST.get('quantity', 1))
+    try:
+        quantity = int(request.POST.get('quantity', 1))
+    except (ValueError, TypeError):
+        messages.error(request, '請輸入有效的數量！')
+        return redirect('store:product_detail', pk=product_id)
     if quantity < 1:
         messages.error(request, '數量必須大於 0！')
         return redirect('store:product_detail', pk=product_id)
@@ -196,25 +182,7 @@ def add_to_cart(request, product_id):
         messages.error(request, f'庫存不足，僅剩 {product.stock} 件！')
         return redirect('store:product_detail', pk=product_id)
 
-    # 確保 session_key 存在
-    session_key = request.session.session_key
-    if not session_key:
-        request.session.create()
-        session_key = request.session.session_key
-    logger.debug(f"Session key: {session_key}, User: {request.user if request.user.is_authenticated else 'Anonymous'}")
-
-    # 動態查詢或創建購物車
-    if request.user.is_authenticated:
-        cart, created = Cart.objects.get_or_create(
-            user=request.user,
-            defaults={'session_key': session_key}
-        )
-    else:
-        cart, created = Cart.objects.get_or_create(
-            session_key=session_key,
-            defaults={'user': None}
-        )
-    logger.debug(f"Cart: {cart}, Created: {created}")
+    cart = get_or_create_cart(request)
 
     # 查找或創建購物車項目
     cart_item, item_created = CartItem.objects.get_or_create(
@@ -236,25 +204,7 @@ def update_cart(request):
         messages.error(request, '無效的請求方式。')
         return redirect('store:cart')
 
-    # 確保 session_key 存在
-    session_key = request.session.session_key
-    if not session_key:
-        request.session.create()
-        session_key = request.session.session_key
-    logger.debug(f"Session key: {session_key}, User: {request.user if request.user.is_authenticated else 'Anonymous'}")
-
-    # 動態查詢或創建購物車
-    if request.user.is_authenticated:
-        cart, created = Cart.objects.get_or_create(
-            user=request.user,
-            defaults={'session_key': session_key}
-        )
-    else:
-        cart, created = Cart.objects.get_or_create(
-            session_key=session_key,
-            defaults={'user': None}
-        )
-    logger.debug(f"Cart: {cart}, Created: {created}")
+    cart = get_or_create_cart(request)
 
     for item in cart.items.all():
         quantity_key = f'quantity_{item.id}'
@@ -285,25 +235,7 @@ def remove_from_cart(request, item_id):
 
 # 結帳
 def checkout(request):
-    # 確保 session_key 存在
-    session_key = request.session.session_key
-    if not session_key:
-        request.session.create()
-        session_key = request.session.session_key
-    logger.debug(f"Session key: {session_key}, User: {request.user if request.user.is_authenticated else 'Anonymous'}")
-
-    # 動態查詢或創建購物車
-    if request.user.is_authenticated:
-        cart, created = Cart.objects.get_or_create(
-            user=request.user,
-            defaults={'session_key': session_key}
-        )
-    else:
-        cart, created = Cart.objects.get_or_create(
-            session_key=session_key,
-            defaults={'user': None}
-        )
-    logger.debug(f"Cart: {cart}, Created: {created}")
+    cart = get_or_create_cart(request)
 
     # 獲取預設地址（僅限登錄用戶）
     default_address = ''
@@ -383,8 +315,6 @@ def checkout(request):
     context = {
         'cart': cart,
         'default_address': default_address,
-        'login_form': AuthenticationForm(),
-        'register_form': UserCreationForm()
     }
     return render(request, 'store/checkout.html', context)
 
@@ -443,8 +373,6 @@ def profile_view(request):
         'user': request.user,
         'profile': profile,
         'recent_orders': recent_orders,
-        'login_form': AuthenticationForm(),
-        'register_form': UserCreationForm()
     }
     return render(request, 'store/profile.html', context)
 
@@ -462,7 +390,5 @@ def order_history(request):
         orders = []
     context = {
         'orders': orders,
-        'login_form': AuthenticationForm(),
-        'register_form': UserCreationForm()
     }
     return render(request, 'store/orders.html', context)
