@@ -6,7 +6,8 @@ Django settings for gundam_store project.
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-# import cloudinary  # 暫時註解 Cloudinary 相關設定
+import cloudinary
+import cloudinary_storage
 
 load_dotenv()
 
@@ -23,8 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'cloudinary',  # 註解 Cloudinary
-    # 'cloudinary_storage',  # 註解 Cloudinary 儲存
+    'cloudinary',
+    'cloudinary_storage',
     'store.apps.StoreConfig',
     'accounts.apps.AccountsConfig',
     'widget_tweaks',
@@ -83,21 +84,20 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# 移除 Cloudinary 儲存設定，使用本地檔案系統
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+# Cloudinary 儲存設定
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# 確保 media 設定正確
+# 確保 media 設定正確（本地 fallback）
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# 移除 Cloudinary 設定
-# cloudinary.config(
-#     cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
-#     api_key=os.getenv('CLOUDINARY_API_KEY'),
-#     api_secret=os.getenv('CLOUDINARY_API_SECRET'),
-#     secure=True
-# )
+# Cloudinary 設定
+cloudinary.config(
+    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
+    api_key=os.getenv('CLOUDINARY_API_KEY'),
+    api_secret=os.getenv('CLOUDINARY_API_SECRET'),
+    secure=True
+)
 
 LOGGING = {
     'version': 1,
