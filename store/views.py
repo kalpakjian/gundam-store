@@ -41,10 +41,10 @@ def get_or_create_cart(request):
 # 首頁
 def home(request):
     # 獲取特色產品（隨機三個有折扣的產品）
-    featured_products = Product.objects.filter(discount_price__isnull=False).order_by('-created_at')[:3]
+    featured_products = Product.objects.filter(discount_price__isnull=False).order_by('-created_at').select_related('category')[:3]
     
     # 獲取最新的五個產品（不排除特價產品）
-    latest_products = Product.objects.order_by('-created_at')[:5]
+    latest_products = Product.objects.order_by('-created_at').select_related('category')[:5]
     
     context = {
         'featured_products': featured_products,
@@ -54,7 +54,7 @@ def home(request):
 
 # 產品列表
 def product_list(request):
-    products = Product.objects.all().order_by('-created_at')
+    products = Product.objects.all().order_by('-created_at').select_related('category')
     paginator = Paginator(products, 9)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -86,7 +86,7 @@ def category_list(request):
 # 分類詳情
 def category_detail(request, pk):
     category = get_object_or_404(Category, pk=pk)
-    products = category.products.all()
+    products = category.products.all().order_by('-created_at').select_related('category')
     paginator = Paginator(products, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -101,7 +101,7 @@ def search_products(request):
     query = request.GET.get('q', '')
     products = Product.objects.filter(
         Q(name__icontains=query) | Q(description__icontains=query)
-    ) if query else Product.objects.all()
+    ).order_by('-created_at').select_related('category') if query else Product.objects.all().order_by('-created_at').select_related('category')
     paginator = Paginator(products, 12)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)

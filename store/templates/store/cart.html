@@ -1,4 +1,3 @@
-<!-- store/templates/store/cart.html -->
 {% extends 'store/base.html' %}
 {% load store_tags %}
 {% load static %}
@@ -42,9 +41,9 @@
                             </td>
                             <td>
                                 {% if item.product.discount_price %}
-                                    {{ item.product.discount_price }} 元
+                                    {{ item.product.discount_price|currency }}
                                 {% else %}
-                                    {{ item.product.price }} 元
+                                    {{ item.product.price|currency }}
                                 {% endif %}
                             </td>
                             <td>
@@ -56,7 +55,7 @@
                 </tbody>
             </table>
 
-            <p><strong>總金額：</strong>{{ cart.items.all|sum_items_price|floatformat:2 }} 元</p>
+            <p><strong>總金額：</strong>{{ cart.items.all|sum_items_price|currency }}</p>
 
             <button type="submit" class="btn btn-primary">更新購物車</button>
             <a href="{% url 'store:checkout' %}" class="btn btn-success">前往結帳</a>

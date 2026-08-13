@@ -54,6 +54,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'accounts.context_processors.auth_forms',
+                'accounts.context_processors.cart_item_count',
             ],
         },
     },
@@ -75,8 +76,8 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'zh-hant'
+TIME_ZONE = 'Asia/Hong_Kong'
 USE_I18N = True
 USE_TZ = True
 
@@ -104,20 +105,22 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
+            'level': os.getenv('LOG_LEVEL', 'INFO'),
+            'class': 'logging.handlers.RotatingFileHandler',
             'filename': os.path.join(BASE_DIR, 'debug.log'),
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'backupCount': 3,
         },
     },
     'loggers': {
         '': {
             'handlers': ['file'],
-            'level': 'DEBUG',
+            'level': os.getenv('LOG_LEVEL', 'INFO'),
             'propagate': True,
         },
         'django.static': {
             'handlers': ['file'],
-            'level': 'DEBUG',
+            'level': os.getenv('LOG_LEVEL', 'INFO'),
             'propagate': False,
         },
     },

@@ -18,12 +18,12 @@
                     <tr>
                         <td>{{ order.id }}</td>
                         <td>{{ order.created_at|date:"Y-m-d H:i" }}</td>
-                        <td>HK$ {{ order.total_price }}</td>
-                        <td>{{ order.status }}</td>
+                        <td>{{ order.total_price|currency }}</td>
+                        <td>{{ order.get_status_display }}</td>
                         <td>
                             <ul>
                                 {% for item in order.items.all %}
-                                    <li>{{ item.product.name }} x {{ item.quantity }} (HK$ {{ item.price }})</li>
+                                    <li>{{ item.product.name }} x {{ item.quantity }} ({{ item.price|currency }})</li>
                                 {% endfor %}
                             </ul>
                         </td>

@@ -7,10 +7,9 @@
     <title>Gundam 商店</title>
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
-    <!-- 臨時禁用 custom.css -->
-    <!-- <link rel="stylesheet" href="{% static 'css/custom.css' %}"> -->
-    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="icon" href="{% static 'images/logo.png' %}" type="image/png">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -29,7 +28,12 @@
                         <a class="nav-link" href="{% url 'store:category_list' %}">類別</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'store:cart' %}">購物車</a>
+                        <a class="nav-link" href="{% url 'store:cart' %}">
+                            購物車
+                            {% if cart_item_count %}
+                                <span class="badge bg-danger">{{ cart_item_count }}</span>
+                            {% endif %}
+                        </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">

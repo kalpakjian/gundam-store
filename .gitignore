@@ -33,6 +33,10 @@ collected_static/
 diff.txt
 tree_output.json
 shared_data_*.json
+products_data.json
+
+# Icon backup files (development artifacts)
+static/icons/iconbackup/
 
 # IDE and editors
 .idea/

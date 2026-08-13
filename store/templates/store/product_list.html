@@ -1,5 +1,6 @@
 {% extends 'store/base.html' %}
 {% load static %}
+{% load store_tags %}
 
 {% block title %}產品列表 - Gundam 商店{% endblock %}
 
@@ -56,10 +57,10 @@
                         </div>
                         <p class="card-text">
                             {% if product.discount_price %}
-                                <span class="text-decoration-line-through text-muted">{{ product.price }} 元</span>
-                                <strong class="text-danger">{{ product.discount_price }} 元</strong>
+                                <span class="text-decoration-line-through text-muted">{{ product.price|currency }}</span>
+                                <strong class="text-danger">{{ product.discount_price|currency }}</strong>
                             {% else %}
-                                {{ product.price }} 元
+                                {{ product.price|currency }}
                             {% endif %}
                         </p>
                     </div>

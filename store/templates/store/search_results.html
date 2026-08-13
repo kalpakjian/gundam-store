@@ -1,6 +1,6 @@
-<!-- store/templates/store/search_results.html -->
 {% extends 'store/base.html' %}
 {% load static %}
+{% load store_tags %}
 {% block title %}搜尋結果 - Gundam 商店{% endblock %}
 {% block content %}
 <div class="container">
@@ -25,10 +25,10 @@
                             <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">
                                 {% if product.discount_price %}
-                                    <span class="text-muted text-decoration-line-through">{{ product.price }} 元</span>
-                                    {{ product.discount_price }} 元
+                                    <span class="text-muted text-decoration-line-through">{{ product.price|currency }}</span>
+                                    {{ product.discount_price|currency }}
                                 {% else %}
-                                    {{ product.price }} 元
+                                    {{ product.price|currency }}
                                 {% endif %}
                                 <br>比例尺：{{ product.scale }}
                             </p>

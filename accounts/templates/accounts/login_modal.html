@@ -72,15 +72,12 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     }
   })
   .then(response => {
-    console.log('Response status:', response.status);
-    console.log('Response headers:', response.headers.get('content-type'));
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     return response.json();
   })
   .then(data => {
-    console.log('Response data:', data);
     if (data.success) {
       const successAlert = document.createElement('div');
       successAlert.className = 'alert alert-success position-fixed top-0 start-50 translate-middle-x mt-3';
@@ -106,7 +103,6 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     }
   })
   .catch(error => {
-    console.error('Fetch error:', error);
     errorDiv.classList.remove('d-none');
     errorDiv.innerHTML = '發生錯誤：' + error.message;
     if (error.message.includes('403')) {

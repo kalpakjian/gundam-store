@@ -39,19 +39,19 @@
                             {% endif %}
                         </td>
                         <td>
-                            {% if item.product.discount_price %}
-                                {{ item.product.discount_price }} 元
-                            {% else %}
-                                {{ item.product.price }} 元
-                            {% endif %}
-                        </td>
+                                {% if item.product.discount_price %}
+                                    {{ item.product.discount_price|currency }}
+                                {% else %}
+                                    {{ item.product.price|currency }}
+                                {% endif %}
+                            </td>
                         <td>{{ item.quantity }}</td>
                         <td>{{ item.get_subtotal|floatformat:2 }} 元</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <p><strong>總金額：</strong>{{ cart.items.all|sum_items_price|floatformat:2 }} 元</p>
+        <p><strong>總金額：</strong>{{ cart.items.all|sum_items_price|currency }}</p>
 
         <form method="POST" action="{% url 'store:checkout' %}">
             {% csrf_token %}
