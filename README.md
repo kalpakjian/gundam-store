@@ -14,15 +14,16 @@ A Django-based online store for Gundam models, featuring product listings, categ
 - **Order history** for logged-in users
 - **User authentication** with AJAX modal login/register
 - **User profile** with avatar upload and address management
-- **Image upload** for product images (local storage)
+- **Image upload** for product images, stored on Cloudinary and served from its CDN
 - **Admin interface** for managing products, categories, and images
+- **Bundled product catalogue** — a fixture with 46 products, 11 categories and 220 images, seeded with a single command
 
 ## Tech Stack
 
-- **Backend:** Django 5.2
+- **Backend:** Django 5.2.18 (LTS)
 - **Database:** SQLite (development) / PostgreSQL (production recommended)
-- **Frontend:** Bootstrap 5.3, jQuery 3.3, Font Awesome, Lightbox2
-- **Image storage:** Local filesystem (`media/` directory)
+- **Frontend:** Bootstrap 5.3.8 with vanilla JavaScript (no jQuery or icon-font dependencies)
+- **Image storage:** Cloudinary — images are uploaded to and served from Cloudinary's CDN, keeping the application itself lightweight
 
 ## Setup
 
@@ -34,9 +35,9 @@ A Django-based online store for Gundam models, featuring product listings, categ
 
 2. Create and activate a virtual environment:
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # Linux/Mac
-   venv\Scripts\activate     # Windows
+   python -m venv .venv
+   source .venv/bin/activate  # Linux/Mac
+   .venv\Scripts\activate     # Windows
    ```
 
 3. Install dependencies:
@@ -44,31 +45,43 @@ A Django-based online store for Gundam models, featuring product listings, categ
    pip install -r requirements.txt
    ```
 
-4. Create a `.env` file (copy from `.env.example`):
+4. Create a `.env` file (copy from `.env.example`) and fill in the values:
    ```bash
    cp .env.example .env
    ```
-   Edit `.env` and set your `SECRET_KEY` (generate one with):
-   ```bash
-   python -c "import secrets; print(secrets.token_urlsafe(50))"
-   ```
+   - `SECRET_KEY` — generate one with:
+     ```bash
+     python -c "import secrets; print(secrets.token_urlsafe(50))"
+     ```
+   - `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` — from your
+     Cloudinary console (Settings → API Keys). The API key needs **upload (create)** permission.
 
-5. Apply migrations:
+5. Start the server:
    ```bash
+   # Windows helper: applies migrations, seeds the product catalogue, then runs the server
+   start.bat
+
+   # Or manually, on any platform
    python manage.py migrate
-   ```
-
-6. (Optional) Populate sample data:
-   ```bash
-   python manage.py shell < populate_data.py
-   ```
-
-7. Run the development server:
-   ```bash
+   python manage.py loaddata_products
    python manage.py runserver
    ```
 
-8. Visit http://127.0.0.1:8000
+6. Visit http://127.0.0.1:8000
+
+## Product Data
+
+The repository ships with a fixture holding the full product catalogue
+(`store/fixtures/products_data.json`): 46 products, 11 categories and 220
+product images. The images live on Cloudinary and are referenced by URL, so no
+binary files are stored in the repository.
+
+Seed it with:
+
+```bash
+python manage.py loaddata_products          # loads only when the store is empty
+python manage.py loaddata_products --force  # wipes store data and reloads
+```
 
 ## Project Structure
 
@@ -83,6 +96,8 @@ gundam-store/
 │   ├── views.py           # Product, cart, checkout, profile views
 │   ├── urls.py            # Store URL routes
 │   ├── admin.py           # Admin configuration
+│   ├── fixtures/          # products_data.json (product catalogue)
+│   ├── management/commands/  # loaddata_products, update_image_paths, update_product_scale
 │   ├── templates/store/   # Store templates
 │   └── templatetags/      # Custom template tags
 ├── accounts/              # User account app
@@ -91,8 +106,10 @@ gundam-store/
 │   ├── forms.py           # Registration and profile forms
 │   ├── context_processors.py  # Injects auth forms into all templates
 │   └── templates/accounts/    # Auth modal templates
-├── static/                # CSS, JS, images, fonts
+├── static/                # Bootstrap CSS/JS, banners, icons, images
 ├── manage.py
+├── start.bat              # Windows helper: migrate + seed + run
+├── start_server.py        # Smoke-test helper (start, probe, stop)
 ├── requirements.txt
 ├── .env.example           # Environment variable template
 └── .gitignore
@@ -105,12 +122,23 @@ gundam-store/
 | `SECRET_KEY` | Django secret key | `django-insecure-dev-key-change-in-production` |
 | `DEBUG` | Debug mode (`True`/`False`) | `False` |
 | `ALLOWED_HOSTS` | Comma-separated allowed hosts | `localhost,127.0.0.1` |
+| `CLOUDINARY_CLOUD_NAME` | Cloudinary cloud name | — |
+| `CLOUDINARY_API_KEY` | Cloudinary API key (needs upload permission) | — |
+| `CLOUDINARY_API_SECRET` | Cloudinary API secret | — |
+
+> `.env` holds credentials and is **not** committed — see `.gitignore`. Use `.env.example` as the template.
+
+## Testing
+
+```bash
+python manage.py test
+```
+
+The suite covers models, views, the cart, checkout and authentication (37 tests).
 
 ## Future Improvements
 
-- Add unit and integration tests
 - Migrate to PostgreSQL for production
-- Add cloud storage (S3/Cloudinary) for media files
 - Implement payment gateway integration (Stripe/PayPal)
 - Add email verification for registration
 - Add rate limiting for login attempts
