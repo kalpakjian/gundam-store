@@ -23,14 +23,12 @@ local_settings.py
 media/
 
 # Environment variables
-# 注意：本專案為內部協作 demo，刻意將 .env 提交到 repo，
-# 讓團隊成員共用 Cloudinary 憑證（可上傳圖片）。
-# 若日後要公開此 repo，請務必改回忽略 .env。
-#.env
+# .env 內含 Cloudinary 憑證與 SECRET_KEY，屬個人專案機密，不進版控。
+# 團隊成員請依 .env.example 自行建立本機 .env。
+.env
 .env.local
 .env.production
 !.env.example
-!.env
 
 # Static files (collected)
 collected_static/
