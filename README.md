@@ -55,6 +55,8 @@ A Django-based online store for Gundam models, featuring product listings, categ
      ```
    - `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` — from your
      Cloudinary console (Settings → API Keys). The API key needs **upload (create)** permission.
+     These are only required to upload or delete images; the bundled catalogue renders
+     without them (see [Product Data](#product-data)).
 
 5. Start the server:
    ```bash
@@ -75,6 +77,14 @@ The repository ships with a fixture holding the full product catalogue
 (`store/fixtures/products_data.json`): 46 products, 11 categories and 220
 product images. The images live on Cloudinary and are referenced by URL, so no
 binary files are stored in the repository.
+
+> **Note:** the store runs and displays the complete catalogue out of the box.
+> Because the fixture stores plain **public Cloudinary CDN URLs**, no
+> credentials are required just to browse the site — images are delivered
+> straight from Cloudinary. Cloudinary credentials are only needed to **upload
+> or delete** images through the admin. To manage your own products, create a
+> Cloudinary account and put its keys in `.env` (see
+> [Environment Variables](#environment-variables)).
 
 Seed it with:
 
