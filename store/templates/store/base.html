@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gundam 商店</title>
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/all.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <link rel="icon" href="{% static 'images/logo.png' %}" type="image/png">
@@ -66,7 +65,7 @@
                     <li class="nav-item">
                         <form class="d-flex" action="{% url 'store:search_products' %}" method="get">
                             <input class="form-control me-2" type="search" name="q" placeholder="搜尋產品" aria-label="Search" style="width: 200px;">
-                            <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+                            <button class="btn btn-outline-success" type="submit" aria-label="搜尋"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg></button>
                         </form>
                     </li>
                 </ul>
@@ -99,7 +98,6 @@
         © 2025 Gundam 線上商店. All rights reserved.
     </footer>
 
-    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     {% block extra_js %}{% endblock %}
 </body>

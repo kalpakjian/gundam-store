@@ -85,8 +85,8 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
       successAlert.innerText = data.message || '登入成功！';
       document.body.appendChild(successAlert);
 
-      // 使用 jQuery 關閉 modal，避開 getInstance 問題
-      $('#loginModal').modal('hide');
+      // 使用 Bootstrap 5 原生 API 關閉 modal
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('loginModal')).hide();
       form.reset();
 
       setTimeout(() => {

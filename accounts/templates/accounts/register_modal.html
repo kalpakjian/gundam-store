@@ -102,7 +102,8 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
       successAlert.innerText = data.message || '註冊成功！請登入或繼續瀏覽。';
       document.body.appendChild(successAlert);
 
-      $('#registerModal').modal('hide');
+      // 使用 Bootstrap 5 原生 API 關閉 modal
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('registerModal')).hide();
       form.reset();
 
       setTimeout(() => successAlert.remove(), 3000);
