@@ -22,9 +22,14 @@ local_settings.py
 media/
 
 # Environment variables
-.env
-.env.*
+# 注意：本專案為內部協作 demo，刻意將 .env 提交到 repo，
+# 讓團隊成員共用 Cloudinary 憑證（可上傳圖片）。
+# 若日後要公開此 repo，請務必改回忽略 .env。
+#.env
+.env.local
+.env.production
 !.env.example
+!.env
 
 # Static files (collected)
 collected_static/
@@ -33,7 +38,10 @@ collected_static/
 diff.txt
 tree_output.json
 shared_data_*.json
-products_data.json
+/products_data.json
+
+# Keep the product fixture used for local deploy seeding
+!store/fixtures/products_data.json
 
 # Icon backup files (development artifacts)
 static/icons/iconbackup/

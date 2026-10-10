@@ -85,10 +85,19 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Cloudinary 儲存設定
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# 儲存設定
+# Django 5.1+ 已移除 DEFAULT_FILE_STORAGE / STATICFILES_STORAGE，
+# 必須改用 STORAGES，否則 Cloudinary 設定會被靜默忽略（圖片只會存本地）。
+STORAGES = {
+    'default': {
+        'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage',
+    },
+    'staticfiles': {
+        'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
+    },
+}
 
-# 確保 media 設定正確（本地 fallback）
+# 本地媒體檔案路徑（僅作為 fallback 參考；實際由 Cloudinary 儲存）
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
