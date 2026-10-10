@@ -11,6 +11,7 @@ pip-delete-this-directory.txt
 venv/
 env/
 ENV/
+.venv/
 
 # Django
 *.sqlite3
@@ -79,3 +80,13 @@ coverage/
 *.gz
 *.zip
 *.tar.gz.env
+
+# Local scratch / debug artifacts (not part of the project)
+null
+v1.txt
+v2.txt
+z.txt
+db_err.txt
+server_run.txt
+test_out.txt
+runserver.log
